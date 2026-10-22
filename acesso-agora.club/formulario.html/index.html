@@ -1,0 +1,715 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#1b305a">
+  <meta name="description" content="Portal informativo independente sobre as Eleições 2026, calendário, votação e serviços oficiais.">
+  <title>Eleições 2026 — Portal Eleitoral Cidadão</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%231b305a'/%3E%3Cpath d='M15 20h34v30H15z' fill='white'/%3E%3Cpath d='M21 14h22v12H21z' fill='%23ffda59'/%3E%3Cpath d='m23 34 6 6 13-15' fill='none' stroke='%231b305a' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <style>
+    :root{--navy:#1b305a;--navy-dark:#0e2749;--navy-deep:#0a203c;--blue:#3375bd;--canvas:#bdd3e3;--yellow:#ffda59;--yellow-soft:#ffe58c;--ink:#1b305a;--black:#0a0a0a;--gray:#e7e7e7;--line:#d5d5d5;--white:#fff;--shadow:0 4px 13px 1px rgba(0,0,0,.05)}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);background:var(--canvas);font:16px/1.5 Inter,Arial,sans-serif}
+    body.menu-open{overflow:hidden}
+    a{color:inherit;text-decoration:none}
+    button,select{font:inherit}
+    button{color:inherit}
+    :focus-visible{outline:3px solid #0b75c9;outline-offset:3px}
+    .wrap{max-width:1320px;margin:0 auto;padding:0 15px}
+    .utility{height:36px;background:var(--navy);color:#fff;font-size:14px}
+    .utility .wrap{height:100%;display:flex;justify-content:flex-end;align-items:center;gap:9px}
+    .utility a:hover{text-decoration:underline}
+    .utility .independent{margin-right:auto;color:#ffe58c;font-weight:600}
+    .primary{height:74px;background:#fff}
+    .nav-row{height:100%;display:flex;align-items:center}
+    .brand{display:flex;align-items:center;gap:10px;margin-right:auto;color:#111;min-width:280px}
+    .brand-mark{width:48px;height:48px;position:relative;flex:0 0 48px}
+    .brand-mark span{position:absolute;border-radius:50%}
+    .brand-mark .one{inset:1px 15px 15px 1px;background:var(--navy)}
+    .brand-mark .two{inset:15px 1px 1px 15px;background:var(--yellow)}
+    .brand-mark:after{content:"";position:absolute;width:27px;height:6px;background:#fff;transform:rotate(-34deg);top:22px;left:10px}
+    .brand-copy{font-weight:700;line-height:1.08;font-size:16px}
+    .brand-copy small{display:block;font-weight:500;font-size:12px;color:#4f4f4f;margin-top:4px}
+    .desktop-menu{display:flex;align-items:center;gap:0;list-style:none;padding:0;margin:0;height:100%}
+    .desktop-menu a{position:relative;display:flex;align-items:center;height:100%;padding:0 12px;color:#1d1d1d}
+    .desktop-menu a:hover,.desktop-menu a.active{font-weight:600}
+    .desktop-menu a.active:after{content:"";position:absolute;height:2px;background:var(--yellow);left:0;right:0;bottom:2px}
+    .search-button,.menu-toggle{width:46px;height:46px;border:0;background:#fff;display:grid;place-items:center;cursor:pointer;margin-left:4px}
+    .search-button svg,.menu-toggle svg{width:25px;height:25px}
+    .menu-toggle{display:none}
+    .mobile-drawer{display:none;background:#fff;border-top:1px solid #eee;padding:10px 20px 18px;box-shadow:0 10px 20px rgba(0,0,0,.08)}
+    .mobile-drawer.open{display:grid}
+    .mobile-drawer a{padding:12px 4px;border-bottom:1px solid #eee}
+    .breadcrumb{height:38px;background:#fff;box-shadow:0 4px 13px 1px rgba(0,0,0,.05);position:relative;z-index:2}
+    .breadcrumb .wrap{height:100%;display:flex;align-items:center;gap:9px;color:#666}
+    .breadcrumb svg{width:18px;height:18px;fill:#666}
+    .breadcrumb a:hover{color:var(--blue)}
+    .breadcrumb .print{margin-left:auto;border:0;background:transparent;cursor:pointer;color:#666;padding:5px}
+    .breadcrumb .print svg{width:19px;height:19px}
+    .main{padding:24px 15px;display:flex;gap:17px;align-items:flex-start}
+    .sidebar{width:330px;flex:0 0 330px;background:#fff;border-radius:5px;box-shadow:var(--shadow);overflow:hidden}
+    .sidebar h2{font-size:20px;font-weight:500;color:#111;margin:0;padding:15px 15px 13px}
+    .sidebar h2:after{content:"";display:block;width:39px;height:2px;background:var(--yellow);margin-top:6px}
+    .side-list{list-style:none;margin:0;padding:0}
+    .side-list a{display:block;color:#111;padding:12px 22px;border-top:1px solid #ddd;line-height:24px}
+    .side-list a:hover{background:#f4f4f4}
+    .side-list a.active{background:#e5e9ec;border-left:3px solid var(--yellow);padding-left:19px;font-weight:600}
+    .mobile-context{display:none;background:#fff;padding:14px;border-radius:5px;box-shadow:var(--shadow);margin-bottom:14px}
+    .mobile-context label{display:block;font-weight:600;margin-bottom:7px}
+    .mobile-context select{width:100%;border:1px solid #aaa;padding:10px;background:#fff;color:var(--ink)}
+    .article{min-width:0;flex:1;background:#fff;border-radius:5px;box-shadow:var(--shadow);padding:7px 15px 28px}
+    .article-head{display:flex;align-items:center;gap:20px;margin-bottom:54px}
+    .article h1{font-size:28px;line-height:1.2;margin:0;font-weight:700}
+    .share{display:flex;gap:9px;margin-left:auto}
+    .share button{width:34px;height:34px;border-radius:50%;border:1px solid #666;background:#fff;display:grid;place-items:center;cursor:pointer}
+    .share button:hover{background:#f2f2f2}
+    .share svg{width:18px;height:18px;stroke:#666}
+    .tabs{display:flex;align-items:flex-end;border-bottom:1px solid #d9d9d9;overflow-x:auto;scrollbar-width:thin}
+    .tab{flex:0 0 auto;border:1px solid #bdbdbd;border-bottom:0;background:#e9e9e9;padding:11px 16px;font-weight:700;color:var(--navy);cursor:pointer;margin-right:-1px;white-space:nowrap}
+    .tab[aria-selected="true"]{background:var(--yellow);position:relative;z-index:1}
+    .tab:hover{filter:brightness(.98)}
+    .panel{padding:15px 15px 0}
+    .panel[hidden]{display:none}
+    .panel p{margin:0 0 14px}
+    .panel h2{font-size:21px;margin:24px 0 10px;color:var(--navy)}
+    .panel h3{font-size:17px;margin:22px 0 9px}
+    .panel ul{margin:4px 0 17px;padding-left:31px}
+    .panel li{padding-left:2px;margin-bottom:9px}
+    .panel a{color:#3c72b5;font-weight:700}
+    .panel a:hover{text-decoration:underline}
+    .notice{border-left:4px solid var(--yellow);background:#fff7d5;padding:15px 17px;margin:18px 0}
+    .notice strong{display:block;margin-bottom:3px}
+    .dates{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0 21px}
+    .date-card{border:1px solid #c8c8c8;padding:15px;display:flex;align-items:center;gap:14px}
+    .date-card time{display:grid;place-items:center;width:62px;height:62px;background:var(--navy);color:#fff;font-weight:700;line-height:1}
+    .date-card time b{font-size:23px;color:var(--yellow)}
+    .date-card span strong{display:block;margin-bottom:3px}
+    .faq details{border-bottom:1px solid #ddd}
+    .faq summary{cursor:pointer;font-weight:700;padding:15px 34px 15px 0;position:relative;list-style:none}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq summary:after{content:"+";position:absolute;right:5px;top:9px;font-size:26px;color:var(--blue)}
+    .faq details[open] summary:after{content:"−"}
+    .faq details p{padding-right:30px}
+    .official-note{margin:26px 15px 0;padding-top:18px;border-top:1px solid #ddd;font-size:14px;color:#555}
+    .official-note strong{color:var(--navy)}
+    .footer-links{background:var(--navy);color:#fff}
+    .footer-links .wrap{min-height:96px;display:flex;align-items:center;gap:25px}
+    .footer-brand{display:flex;align-items:center;gap:10px;font-weight:700;line-height:1.1;margin-right:auto}
+    .footer-brand .mini-mark{width:49px;height:49px;background:#fff;display:grid;place-items:center;color:var(--navy);font-size:28px;font-weight:700}
+    .footer-nav{display:flex;align-items:center;gap:28px;flex-wrap:wrap;font-size:14px}
+    .footer-nav a:hover{text-decoration:underline}
+    .footer-main{background:var(--navy-dark);color:#fff;padding:47px 0 56px}
+    .footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+    .contact-row{display:flex;gap:18px;align-items:flex-start;font-size:17px}
+    .contact-row svg{width:26px;flex:0 0 26px;margin-top:2px}
+    .contact-row p{margin:0}
+    .hours{border-top:1px solid #fff;margin-top:62px;padding-top:14px;display:flex;gap:18px}
+    .hours svg{width:26px;flex:0 0 26px}
+    .hours p{margin:0;font-size:16px}
+    .footer-actions{display:grid;gap:18px}
+    .socials{display:flex;justify-content:center;gap:10px;margin-bottom:4px}
+    .socials span{width:38px;height:38px;border-radius:50%;background:#fff;color:#000;display:grid;place-items:center;font-weight:700}
+    .footer-action{height:45px;background:var(--navy);display:flex;align-items:center;justify-content:center;gap:9px;border:0;color:#fff;cursor:pointer}
+    .footer-action:hover{background:#263f70}
+    .footer-action svg{width:24px;height:24px}
+    .accessibility{position:fixed;right:20px;bottom:18px;width:48px;height:48px;border-radius:50%;border:3px solid #fff;background:#1c5f9b;color:#fff;font-size:26px;box-shadow:0 2px 8px rgba(0,0,0,.25);z-index:30;cursor:pointer}
+    .cookie{position:fixed;left:0;right:0;bottom:0;background:var(--yellow-soft);color:#132344;padding:25px 0 28px;z-index:25;box-shadow:0 -3px 14px rgba(0,0,0,.08)}
+    .cookie[hidden]{display:none}
+    .cookie h2{font-size:20px;margin:0 0 2px}
+    .cookie p{margin:0 0 10px;font-size:14px}
+    .cookie-actions{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+    .cookie button{border:2px solid var(--navy);background:transparent;padding:8px 17px;border-radius:4px;cursor:pointer}
+    .cookie button.primary-cookie{background:var(--navy);color:#fff}
+    .cookie a{text-decoration:underline;margin-left:3px;font-size:14px}
+    @media(max-width:1100px){
+      .desktop-menu a{padding:0 7px;font-size:14px}.brand{min-width:230px}.sidebar{width:270px;flex-basis:270px}
+      .footer-links .wrap{align-items:flex-start;padding-top:24px;padding-bottom:24px}.footer-nav{justify-content:flex-end}
+    }
+    @media(max-width:900px){
+      .utility{height:auto;min-height:36px}.utility .wrap{padding-top:7px;padding-bottom:7px}.utility .wrap>a,.utility .sep{display:none}
+      .primary{height:68px}.desktop-menu,.search-button{display:none}.menu-toggle{display:grid}.brand{min-width:0}.mobile-drawer{position:absolute;left:0;right:0;z-index:40}
+      .main{display:block}.sidebar{display:none}.mobile-context{display:block}.article-head{margin-bottom:28px}.footer-links .wrap{display:block}.footer-brand{margin-bottom:22px}.footer-nav{justify-content:flex-start}
+      .footer-grid{grid-template-columns:1fr}.hours{margin-top:35px}.footer-actions{margin-top:15px}
+    }
+    @media(max-width:600px){
+      .wrap{padding-left:13px;padding-right:13px}.utility .independent{font-size:12px}.brand-copy{font-size:14px}.brand-copy small{font-size:11px}
+      .breadcrumb{height:42px;font-size:13px}.breadcrumb .print{display:none}.main{padding-top:15px;padding-bottom:15px}
+      .article{padding:10px 9px 24px}.article-head{align-items:flex-start}.article h1{font-size:24px}.share{gap:5px}.share button{width:31px;height:31px}
+      .tab{padding:10px 13px;font-size:14px}.panel{padding:14px 8px 0}.dates{grid-template-columns:1fr}
+      .footer-nav{display:grid;gap:11px}.footer-main{padding-top:35px}.footer-grid{gap:22px}.contact-row{font-size:15px}
+      .cookie{padding:18px 0 20px}.cookie h2{font-size:18px}.cookie-actions{display:grid;grid-template-columns:1fr 1fr}.cookie button{padding:8px 8px}.cookie a{grid-column:1/-1;margin-top:3px}
+      .accessibility{width:44px;height:44px;right:12px;bottom:12px}
+    }
+    @media print{.utility,.primary,.breadcrumb,.sidebar,.mobile-context,.share,.tabs,.footer-links,.footer-main,.cookie,.accessibility{display:none!important}.main{display:block;padding:0}.article{box-shadow:none}.panel[hidden]{display:block}.panel{page-break-inside:avoid}}
+  </style>
+<base target="_blank">
+</head>
+<body>
+  <div class="utility">
+    <div class="wrap">
+      
+      <a href="#conteudo">Acessibilidade</a><span class="sep">|</span>
+      <a href="#">Fonte oficial: TSE</a><span class="sep">|</span>
+      <a href="#rodape">Contato</a><span class="sep">|</span><span>● PT-BR</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="primary">
+      <div class="wrap nav-row">
+        <a class="brand" href="#" aria-label="Tribunal Superior Eleitoral">
+  <img
+    src="https://www.tse.jus.br/++theme++justica_eleitoral/imagens/logos/tse.svg"
+    alt="Tribunal Superior Eleitoral"
+    style="display:block; width:130px; max-width:100%; height:auto;"
+  >
+</a>
+        <nav aria-label="Navegação principal">
+          <ul class="desktop-menu">
+            <li><a class="active" href="#conteudo">Eleições 2026</a></li>
+            <li><a href="#servicos">Serviços eleitorais</a></li>
+            <li><a href="#informacao">Informação segura</a></li>
+            <li><a href="#duvidas">Perguntas frequentes</a></li>
+            <li><a href="#">Canais oficiais</a></li>
+          </ul>
+        </nav>
+        <button class="search-button" type="button" aria-label="Pesquisar nesta página" onclick="document.getElementById('conteudo').scrollIntoView()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>
+        </button>
+        <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav class="mobile-drawer" id="mobile-menu" aria-label="Navegação móvel">
+      <a href="#conteudo">Eleições 2026</a><a href="#servicos">Serviços eleitorais</a><a href="#informacao">Informação segura</a><a href="#duvidas">Perguntas frequentes</a><a href="#">Canais oficiais ↗</a>
+    </nav>
+    <div class="breadcrumb">
+      <div class="wrap">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8v10h-6v-7H9v7H3z"/></svg>
+        <span>/</span><a href="#">Eleições</a><span>/</span><span>Eleições 2026</span>
+        <button class="print" type="button" onclick="window.print()" aria-label="Imprimir página"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 8V3h10v5M7 17h10v4H7z"/><path d="M6 17H4V9h16v8h-2"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <style>
+  .cta-justificar{
+    display:flex;flex-direction:column;align-items:center;gap:.75rem;
+    margin:1.5rem auto;padding:1.5rem 1.25rem;max-width:640px;text-align:center;
+    background:linear-gradient(135deg,#eef4ff,#f6f9ff);
+    border:1px solid #c9d8f5;border-radius:14px;
+  }
+  .cta-justificar p{margin:0;font-size:.95rem;color:#33415c}
+  .cta-justificar .cta-button{
+    display:inline-block;padding:.8rem 1.75rem;border-radius:999px;
+    background:#1d4ed8;color:#fff;font-weight:700;font-size:1rem;
+    text-decoration:none;box-shadow:0 6px 16px rgba(29,78,216,.28);
+    transition:transform .15s ease,background .15s ease;
+  }
+  .cta-justificar .cta-button:hover{background:#1e40af;transform:translateY(-2px)}
+  .cta-justificar .cta-button:focus-visible{outline:3px solid #93c5fd;outline-offset:2px}
+  .cta-justificar small{color:#64748b;font-size:.8rem}
+</style>
+
+<main class="wrap main" id="conteudo">
+    <article class="article">
+      <div class="article-head">
+        <h1>Situação Eleitoral - Consulta e Regularização</h1>
+      </div>
+
+      <section class="panel" id="panel-pendencias">
+        <p>Identificamos pendências no seu cadastro eleitoral decorrentes da ausência de votação e de justificativa em <strong>Diversas eleições anteriores entre (2010 a 2024)</strong>.</p>
+
+        <div class="notice">
+          <strong>Aviso importante para o pleito de 2026:</strong> Para que você possa solicitar a justificativa eleitoral referente às Eleições de 2026, é necessário regularizar previamente as pendências relativas aos pleitos de 2022 e 2024. A existência de ausências não justificadas em eleições passadas impede o processamento de novos pedidos de justificativa.
+        </div>
+
+        <h2>Histórico de pendências encontradas</h2>
+        <ul>
+          <li><strong>Eleição Geral 2024:</strong> Ausência não registrada/justificada</li>
+          <li><strong>Eleição Geral 2022:</strong> Ausência não registrada/justificada</li>
+        </ul>
+
+        <h2>Como proceder para regularizar sua situação</h2>
+        <p>Para regularizar os pleitos anteriores e liberar seu cadastro para os serviços eleitorais de 2026, siga o passo a passo oficial:</p>
+        <ol>
+          
+          <li>Clique no botao abaixo e efetue o pagamento da TAXA DE JUSTIFICATIVA DE VOTO.</li>
+          <li>Solicite a regularização dos turnos pendentes.</li>
+          <li>Após o processamento e a atualização da situação no sistema da Justiça Eleitoral, as suas justificativas serão todas aceitas.</li>
+        </ol>
+        
+        
+        <a href="../checkout/" class="btn-justificar">
+  Regularizar votos
+</a>
+
+<style>
+  .btn-justificar {
+    display: flex;
+    width: fit-content;
+    margin: 20px auto;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 26px;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: #ffffff !important;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none !important;
+    border: 1px solid #1d4ed8;
+    border-radius: 8px;
+    box-shadow: 0 5px 14px rgba(37, 99, 235, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .btn-justificar:hover {
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
+  }
+</style>
+
+        <h2>Consequências do título irregular</h2>
+        <p>Manter pendências não regularizadas pode levar ao cancelamento do título e restrições como:</p>
+        <ul>
+          <li>Perda de auxílios do governo, negativação do CPF e perda do direito ao voto;</li>
+          <li>pendências iram impedir a assinatura da carteira de trabalho e a realização de contratos de serviço;</li>
+          <li>Fica proibida a condução de veículos, assim como a cassação da CNH.</li>
+        </ul>
+      </section>
+
+      <p class="official-note">
+        <strong>Nota informativa:</strong> A verificação de dados e o pedido de regularização devem ser feitos exclusivamente pelos canais oficiais da Justiça Eleitoral em <a href="https://www.tse.jus.br" target="_blank" rel="noopener">tse.jus.br</a>.
+      </p>
+    </article>
+</main>
+
+  <style>
+  .tse-footer,
+  .tse-footer * {
+    box-sizing: border-box;
+  }
+
+  .tse-footer {
+    width: 100%;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .tse-footer-container {
+    width: min(1340px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  /* Parte superior */
+  .tse-footer-top {
+    background: #1d3765;
+  }
+
+  .tse-footer-top-content {
+    min-height: 82px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+  }
+
+  .tse-footer-logo {
+    display: block;
+    width: 135px;
+    height: auto;
+    flex-shrink: 0;
+    filter: grayscale(100%) brightness(0) invert(1);
+  }
+
+  .tse-footer-menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  .tse-footer-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: opacity 0.2s ease;
+  }
+
+  .tse-footer-menu a:hover {
+    opacity: 0.75;
+    text-decoration: underline;
+  }
+
+  /* Parte principal */
+  .tse-footer-main {
+    background: #0d294e;
+    padding: 40px 0 48px;
+  }
+
+  .tse-footer-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(420px, 1fr);
+    gap: 70px;
+    align-items: start;
+  }
+
+  .tse-footer-info-item {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .tse-footer-info-item svg {
+    width: 22px;
+    height: 22px;
+    margin-top: 3px;
+    flex-shrink: 0;
+  }
+
+  .tse-footer-info-item p {
+    margin: 0;
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .tse-footer-info-item a {
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  .tse-footer-divider {
+    height: 1px;
+    margin: 60px 0 12px;
+    background: rgba(255, 255, 255, 0.85);
+  }
+
+  .tse-footer-hours strong {
+    font-weight: 700;
+  }
+
+  .tse-footer-more {
+    display: inline-block;
+    margin: 26px 0 0 40px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .tse-footer-more:hover {
+    text-decoration: underline;
+  }
+
+  /* Redes sociais */
+  .tse-footer-socials {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .tse-footer-socials a {
+    width: 31px;
+    height: 31px;
+    border-radius: 50%;
+    background: #fff;
+    color: #0d294e;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 800;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .tse-footer-socials a:hover {
+    transform: translateY(-2px);
+    opacity: 0.85;
+  }
+
+  .tse-footer-socials .social-small {
+    font-size: 12px;
+  }
+
+  /* Botões laterais */
+  .tse-footer-actions {
+    display: grid;
+    gap: 17px;
+  }
+
+  .tse-footer-action {
+    width: 100%;
+    min-height: 42px;
+    border: 0;
+    background: #1d3a6b;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 9px 16px;
+    font: inherit;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .tse-footer-action:hover {
+    background: #294a80;
+  }
+
+  .tse-footer-action svg {
+    width: 25px;
+    height: 25px;
+    color: #cfd8e8;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 900px) {
+    .tse-footer-top-content {
+      padding: 22px 0;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 22px;
+    }
+
+    .tse-footer-menu {
+      justify-content: flex-start;
+      gap: 16px 24px;
+    }
+
+    .tse-footer-grid {
+      grid-template-columns: 1fr;
+      gap: 42px;
+    }
+
+    .tse-footer-socials {
+      justify-content: flex-start;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .tse-footer-container {
+      width: min(100% - 28px, 1340px);
+    }
+
+    .tse-footer-logo {
+      width: 120px;
+    }
+
+    .tse-footer-menu {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .tse-footer-main {
+      padding: 32px 0;
+    }
+
+    .tse-footer-info-item p,
+    .tse-footer-more {
+      font-size: 14px;
+    }
+
+    .tse-footer-divider {
+      margin-top: 35px;
+    }
+
+    .tse-footer-more {
+      margin-left: 40px;
+    }
+  }
+</style>
+
+<footer id="rodape" class="tse-footer">
+
+  <div class="tse-footer-top">
+    <div class="tse-footer-container tse-footer-top-content">
+
+      <img
+        class="tse-footer-logo"
+        src="https://www.tse.jus.br/++theme++justica_eleitoral/imagens/logos/tse.svg"
+        alt="Tribunal Superior Eleitoral"
+      >
+
+      <nav class="tse-footer-menu" aria-label="Links institucionais">
+        <a href="#">Carta de serviços</a>
+        <a href="#">Glossário Eleitoral</a>
+        <a href="#">Guia de Recolhimento da União (GRU)</a>
+        <a href="#">Situação dos sistemas</a>
+        <a href="#">Meu Espaço</a>
+      </nav>
+
+    </div>
+  </div>
+
+  <div class="tse-footer-main">
+    <div class="tse-footer-container tse-footer-grid">
+
+      <div class="tse-footer-information">
+
+        <div class="tse-footer-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path>
+            <circle cx="12" cy="10" r="2.5"></circle>
+          </svg>
+
+          <p>
+            <strong>Setor de Administração Federal Sul (SAFS)</strong><br>
+            Quadra 7, Lotes 1/2, Brasília/DF - 70095-901<br>
+            <a href="tel:+556130307000">Telefone: (61) 3030-7000</a>
+          </p>
+        </div>
+
+        <div class="tse-footer-divider"></div>
+
+        <div class="tse-footer-info-item tse-footer-hours">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M12 7v6l4 2"></path>
+          </svg>
+
+          <p>
+            Funcionamento do Protocolo administrativo: De acordo com a
+            <strong>Portaria TSE nº 455 de 23 de julho de 2026</strong>, no período
+            compreendido entre 15 de agosto e 18 de dezembro de 2026, incluindo
+            finais de semana e feriados, o atendimento ao público externo no
+            protocolo administrativo do Tribunal Superior Eleitoral será realizado
+            das 10 às 20 horas.
+          </p>
+        </div>
+
+        <a class="tse-footer-more" href="#">
+          Horário de funcionamento de outros serviços e mais informações.
+        </a>
+
+      </div>
+
+      <div class="tse-footer-right">
+
+        <div class="tse-footer-socials" aria-label="Redes sociais">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="X">X</a>
+          <a href="#" aria-label="Instagram">◎</a>
+          <a href="#" aria-label="YouTube">▶</a>
+          <a href="#" aria-label="Flickr">••</a>
+          <a href="#" aria-label="TikTok">♪</a>
+          <a href="#" aria-label="LinkedIn" class="social-small">in</a>
+          <a href="#" aria-label="Outras redes">◉</a>
+        </div>
+
+        <div class="tse-footer-actions">
+
+          <a class="tse-footer-action" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M4 4h16v13H8l-4 4Z"></path>
+              <path d="M8 8h8M8 12h6"></path>
+            </svg>
+            Ouvidoria
+          </a>
+
+          <a class="tse-footer-action" href="#">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="10" r="6"></circle>
+              <path d="m9 10 2 2 4-4M9 16l-1 6 4-2 4 2-1-6"></path>
+            </svg>
+            Termos de uso e privacidade
+          </a>
+
+          <button class="tse-footer-action cookie-settings" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="3"></circle>
+              <path d="M12 2v3M12 19v3M4.9 4.9 7 7M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1"></path>
+            </svg>
+            Configurações de cookies
+          </button>
+
+          <button
+            class="tse-footer-action"
+            type="button"
+            onclick="window.scrollTo({top:0, behavior:'smooth'})"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="9"></circle>
+              <path d="M8 13c1 2 2.3 3 4 3s3-1 4-3M8 9h.01M16 9h.01"></path>
+            </svg>
+            Como foi sua navegação?
+          </button>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</footer>
+
+  
+  
+
+  <script>
+    (function(){
+      var menuButton=document.querySelector('.menu-toggle');
+      var mobileMenu=document.getElementById('mobile-menu');
+      menuButton.addEventListener('click',function(){
+        var isOpen=mobileMenu.classList.toggle('open');
+        menuButton.setAttribute('aria-expanded',String(isOpen));
+        menuButton.setAttribute('aria-label',isOpen?'Fechar menu':'Abrir menu');
+        document.body.classList.toggle('menu-open',isOpen);
+      });
+      mobileMenu.querySelectorAll('a').forEach(function(link){link.addEventListener('click',function(){mobileMenu.classList.remove('open');menuButton.setAttribute('aria-expanded','false');document.body.classList.remove('menu-open')})});
+
+      var tabs=Array.from(document.querySelectorAll('[role="tab"]'));
+      function selectTab(tab){
+        tabs.forEach(function(item){
+          var selected=item===tab;
+          item.setAttribute('aria-selected',String(selected));
+          item.tabIndex=selected?0:-1;
+          document.getElementById(item.getAttribute('aria-controls')).hidden=!selected;
+        });
+        tab.scrollIntoView({block:'nearest',inline:'nearest'});
+      }
+      tabs.forEach(function(tab,index){
+        tab.addEventListener('click',function(){selectTab(tab)});
+        tab.addEventListener('keydown',function(event){
+          if(event.key==='ArrowRight'||event.key==='ArrowLeft'){
+            event.preventDefault();
+            var direction=event.key==='ArrowRight'?1:-1;
+            var next=tabs[(index+direction+tabs.length)%tabs.length];
+            selectTab(next);next.focus();
+          }
+        });
+      });
+
+      document.getElementById('service-select').addEventListener('change',function(){if(this.value)window.open(this.value,'_blank','noopener')});
+      var cookie=document.getElementById('cookie-banner');
+      try{if(localStorage.getItem('portal-cookie-choice'))cookie.hidden=true}catch(error){}
+      document.querySelectorAll('.cookie-close').forEach(function(button){button.addEventListener('click',function(){cookie.hidden=true;try{localStorage.setItem('portal-cookie-choice','saved')}catch(error){}})});
+      document.querySelector('.cookie-settings').addEventListener('click',function(){cookie.hidden=false;cookie.scrollIntoView()});
+      document.querySelector('.copy-link').addEventListener('click',function(){
+        var button=this;
+        if(navigator.clipboard){navigator.clipboard.writeText(location.href).then(function(){button.setAttribute('aria-label','Link copiado')})}
+      });
+    })();
+  </script>
+</body>
+</html>

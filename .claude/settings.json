@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(\\(Get-ChildItem -Path \"c:\\\\Meus Sites\\\\TH\" -Recurse -File\\).Count)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Meus Sites\\\\TH\" -Recurse -File -Force | ForEach-Object { \"{0,10}  {1}\" -f $_.Length, $_.FullName.Substring\\(18\\) })",
+      "WebFetch(domain:api.blackcatoficial.com)",
+      "WebSearch",
+      "Bash(PHP_CLI_SERVER_WORKERS=4 php -S 127.0.0.1:8080 -t .)",
+      "Bash(curl -s -X POST \"http://127.0.0.1:8080/checkout/pagamento.php\" -H \"Content-Type: application/json\" -d '{\"nome\":\"x\"}' -w \"\\\\n[HTTP %{http_code}]\\\\n\")",
+      "Bash(curl -s -X POST \"http://127.0.0.1:8080/pagamento-upsell.php\" -H \"Content-Type: application/json\" -d '{\"nome\":\"x\"}' -w \"\\\\n[HTTP %{http_code}]\\\\n\")",
+      "Bash(curl -s -X POST \"http://127.0.0.1:8080/checkout/pagamento-upsell2.php\" -H \"Content-Type: application/json\" -d '{\"nome\":\"x\"}' -w \"\\\\n[HTTP %{http_code}]\\\\n\")",
+      "Bash(curl -s \"http://127.0.0.1:8080/checkout/verificar.php?id=abc\" -w \"\\\\n[HTTP %{http_code}]\\\\n\")",
+      "Bash(curl -s \"http://127.0.0.1:8080/checkout/verificar.php?id=TRX1792650588407VI5JI\" -w \"\\\\n[HTTP %{http_code}]\\\\n\")",
+      "Bash(start \"\" \"http://127.0.0.1:8080/\")",
+      "Bash(curl -s -D - -o /tmp/out.bin \"http://127.0.0.1:8080/images/BoufTZvJq0uv.svg\")",
+      "Read(//tmp/**)",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" \"http://127.0.0.1:8080/\")"
+    ]
+  }
+}

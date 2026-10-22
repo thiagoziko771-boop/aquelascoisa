@@ -1,0 +1,4 @@
+# Bloqueia o download dos arquivos com credenciais caso o PHP fique inativo.
+<FilesMatch "^(config|blackcat)\.php$">
+    Require all denied
+</FilesMatch>

