@@ -43,12 +43,28 @@ async function requestJson(path, options = {}) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 45000);
   try {
-    const response = await fetch(new URL(path, new URL(CONFIG.apiBase, location.href)), {
+    let response = await fetch(new URL(path, new URL(CONFIG.apiBase, location.href)), {
       credentials: 'same-origin', cache: 'no-store', ...options, signal: controller.signal,
     });
+    if (!response.ok && response.status === 404) {
+      let functionPath = path;
+      if (path.includes('verificar.php')) {
+        const queryIndex = path.indexOf('?');
+        functionPath = '/.netlify/functions/verificar' + (queryIndex !== -1 ? path.slice(queryIndex) : '');
+      } else if (path.includes('pagamento-upsell2.php')) {
+        functionPath = '/.netlify/functions/pagamento-upsell2';
+      } else if (path.includes('dados-cliente.php')) {
+        functionPath = '/.netlify/functions/dados-cliente';
+      }
+      if (functionPath !== path) {
+        response = await fetch(functionPath, {
+          cache: 'no-store', ...options, signal: controller.signal,
+        });
+      }
+    }
     let data;
     try { data = await response.json(); }
-    catch { throw new Error('O servidor não retornou uma resposta válida. Confira os arquivos PHP da pasta checkout.'); }
+    catch { throw new Error('O servidor não retornou uma resposta válida. Confira os arquivos da pasta checkout.'); }
     if (!response.ok || data.success !== true) throw new Error(data.message || 'Não foi possível concluir a solicitação.');
     return data;
   } finally { clearTimeout(timeout); }

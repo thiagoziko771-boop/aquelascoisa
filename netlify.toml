@@ -1,0 +1,100 @@
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+# Redirecionamentos para Serverless Functions (compatibilidade total com as chamadas PHP)
+[[redirects]]
+  from = "/acesso-agora.club/checkout/pagamento.php"
+  to = "/.netlify/functions/pagamento"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/checkout/pagamento.php"
+  to = "/.netlify/functions/pagamento"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/pagamento.php"
+  to = "/.netlify/functions/pagamento"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/acesso-agora.club/checkout/verificar.php"
+  to = "/.netlify/functions/verificar"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/checkout/verificar.php"
+  to = "/.netlify/functions/verificar"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/verificar.php"
+  to = "/.netlify/functions/verificar"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/acesso-agora.club/pagamento-upsell.php"
+  to = "/.netlify/functions/pagamento-upsell"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/pagamento-upsell.php"
+  to = "/.netlify/functions/pagamento-upsell"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/acesso-agora.club/checkout/pagamento-upsell2.php"
+  to = "/.netlify/functions/pagamento-upsell2"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/checkout/pagamento-upsell2.php"
+  to = "/.netlify/functions/pagamento-upsell2"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/acesso-agora.club/up2/pagamento-upsell2.php"
+  to = "/.netlify/functions/pagamento-upsell2"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/pagamento-upsell2.php"
+  to = "/.netlify/functions/pagamento-upsell2"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/acesso-agora.club/checkout/dados-cliente.php"
+  to = "/.netlify/functions/dados-cliente"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/checkout/dados-cliente.php"
+  to = "/.netlify/functions/dados-cliente"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/acesso-agora.club/up2/dados-cliente.php"
+  to = "/.netlify/functions/dados-cliente"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/dados-cliente.php"
+  to = "/.netlify/functions/dados-cliente"
+  status = 200
+  force = true

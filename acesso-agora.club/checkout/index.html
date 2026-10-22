@@ -425,15 +425,37 @@ src="https://www.facebook.com/tr?id=1917961022187197&ev=PageView&noscript=1"
 
       console.log('[PIX] Enviando dados para backend:', payload);
 
-      // Chamar backend PHP
-      var response = await fetch('pagamento.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      });
+      // Chamar backend (com fallback para Netlify Function)
+      var response;
+      try {
+        response = await fetch('pagamento.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+        if (!response.ok && response.status === 404) {
+          response = await fetch('/.netlify/functions/pagamento', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify(payload)
+          });
+        }
+      } catch (e) {
+        response = await fetch('/.netlify/functions/pagamento', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+      }
 
       var result = await response.json().catch(function () { return {}; });
       console.log('[PIX] Resposta do backend:', result);
@@ -555,6 +577,9 @@ src="https://www.facebook.com/tr?id=1917961022187197&ev=PageView&noscript=1"
     statusEmAndamento = true;
     try {
       var response = await fetch('verificar.php?id=' + encodeURIComponent(transactionId), { cache: 'no-store' });
+      if (!response.ok && response.status === 404) {
+        response = await fetch('/.netlify/functions/verificar?id=' + encodeURIComponent(transactionId), { cache: 'no-store' });
+      }
       
       if (!response.ok) {
         console.error('Erro ao verificar status: HTTP ' + response.status);

@@ -1107,6 +1107,17 @@
                 body: JSON.stringify(getCustomerData())
             });
 
+            if (!response.ok && response.status === 404) {
+                response = await fetch('/.netlify/functions/pagamento-upsell', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(getCustomerData())
+                });
+            }
+
             var result = await response.json().catch(function () {
                 return {};
             });
@@ -1166,6 +1177,17 @@
                     cache: 'no-store'
                 }
             );
+
+            if (!response.ok && response.status === 404) {
+                response = await fetch(
+                    '/.netlify/functions/verificar?id='
+                    + encodeURIComponent(paymentCode),
+                    {
+                        method: 'GET',
+                        cache: 'no-store'
+                    }
+                );
+            }
 
             if (!response.ok) {
                 return;
